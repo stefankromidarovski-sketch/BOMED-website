@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOMED — Природата во секоја капка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="brand_assets/BOMED.jpg" type="image/jpeg" />
+  <meta name="description" content="BOMED — чисти пчелни производи со исклучителни лековити својства. Pure honey and healing bee products from the Macedonian mountains." />
+  <meta property="og:title" content="BOMED — Природата во секоја капка" />
+  <meta property="og:description" content="Pure honey and healing bee products from the Macedonian highlands. 25+ years of family beekeeping tradition." />
+  <meta property="og:image" content="https://YOURDOMAIN.COM/brand_assets/BOMED.jpg" />
+  <meta property="og:url" content="https://YOURDOMAIN.COM/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BOMED — Природата во секоја капка" />
+  <meta name="twitter:description" content="Pure honey and healing bee products from the Macedonian highlands. 25+ years of family beekeeping tradition." />
+  <meta name="twitter:image" content="https://YOURDOMAIN.COM/brand_assets/BOMED.jpg" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold:        #D4A843;
+      --gold-light:  #F0C85A;
+      --gold-dark:   #A07830;
+      --honey:       #C8860A;
+      --amber:       #E8A020;
+      --bg:          #0F0E0C;
+      --bg2:         #161410;
+      --bg3:         #1D1A14;
+      --bg4:         #252018;
+      --cream:       #F8F0DC;
+      --cream2:      #F2E8CC;
+      --text:        #EDE8DF;
+      --text-dim:    #A8A090;
+      --text-dark:   #2C2010;
+      --r:           3px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    h1, h2, h3, h4, h5 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ::selection { background: rgba(212,168,67,0.3); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg2); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+
+    /* ─── Lang Logic ─── */
+    body.lang-en [data-mk] { display: none !important; }
+    body.lang-en [data-al] { display: none !important; }
+    body.lang-mk [data-en] { display: none !important; }
+    body.lang-mk [data-al] { display: none !important; }
+    body.lang-al [data-mk] { display: none !important; }
+    body.lang-al [data-en] { display: none !important; }
+    body:not(.lang-en):not(.lang-mk):not(.lang-al) [data-en] { display: none !important; }
+    body:not(.lang-en):not(.lang-mk):not(.lang-al) [data-al] { display: none !important; }
+
+    /* ─── Hex BG ─── */
+    .hex-bg {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='104' viewBox='0 0 60 104'%3E%3Cpath d='M30 2 L58 18 L58 50 L30 66 L2 50 L2 18 Z' fill='none' stroke='%23D4A843' stroke-opacity='0.06' stroke-width='1'/%3E%3Cpath d='M30 54 L58 70 L58 102 L30 118 L2 102 L2 70 Z' fill='none' stroke='%23D4A843' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
+    }
+    .hex-bg-cream {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='104' viewBox='0 0 60 104'%3E%3Cpath d='M30 2 L58 18 L58 50 L30 66 L2 50 L2 18 Z' fill='none' stroke='%23A07830' stroke-opacity='0.1' stroke-width='1'/%3E%3Cpath d='M30 54 L58 70 L58 102 L30 118 L2 102 L2 70 Z' fill='none' stroke='%23A07830' stroke-opacity='0.1' stroke-width='1'/%3E%3C/svg%3E");
+    }
+
+    /* ═══════════════ NAV ═══════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 74px;
+      background: rgba(10,9,8,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212,168,67,0.12);
+      transition: background 0.3s, height 0.3s;
+    }
+    nav.scrolled { height: 64px; background: rgba(10,9,8,0.98); }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 46px; width: 46px; object-fit: contain; border-radius: 50%; }
+    .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; letter-spacing: 0.14em; color: var(--gold); }
+    .nav-center { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-center a {
+      font-size: 0.76rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-dim);
+      transition: color 0.2s; position: relative; padding-bottom: 2px;
+    }
+    .nav-center a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+    }
+    .nav-center a:hover { color: var(--gold); }
+    .nav-center a:hover::after { transform: scaleX(1); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .btn-nav {
+      padding: 11px 24px; background: var(--gold);
+      color: #0F0E0C; font-weight: 700; font-size: 0.72rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      border-radius: 2px; transition: background 0.2s, transform 0.15s; white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .lang-toggle {
+      display: flex; align-items: center; gap: 2px;
+      background: rgba(212,168,67,0.08);
+      border: 1px solid rgba(212,168,67,0.25);
+      border-radius: 20px; padding: 3px;
+    }
+    .lang-btn {
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 4px 8px; border-radius: 14px;
+      transition: all 0.2s; border: none; background: transparent;
+      color: var(--text-dim); cursor: pointer;
+    }
+    .lang-btn.active { background: var(--gold); color: #0F0E0C; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--gold); border-radius: 1px; transition: all 0.3s; }
+    .mobile-nav {
+      display: none; position: fixed; inset: 0;
+      background: rgba(10,9,8,0.98); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--text); transition: color 0.2s; }
+    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav-close { position: absolute; top: 24px; right: 5vw; font-size: 1.6rem; color: var(--text-dim); cursor: pointer; }
+    .mobile-lang-toggle { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+
+    /* ═══════════════ HERO ═══════════════ */
+    #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(212,168,67,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(160,120,48,0.12) 0%, transparent 60%),
+        linear-gradient(170deg, #0A0908 0%, #181208 35%, #0F0E0C 100%);
+    }
+    .hero-comb {
+      position: absolute; inset: 0; z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='138' viewBox='0 0 80 138'%3E%3Cpath d='M40 2 L78 22 L78 62 L40 82 L2 62 L2 22 Z' fill='none' stroke='%23D4A843' stroke-opacity='0.05' stroke-width='1.5'/%3E%3Cpath d='M40 72 L78 92 L78 132 L40 152 L2 132 L2 92 Z' fill='none' stroke='%23D4A843' stroke-opacity='0.05' stroke-width='1.5'/%3E%3C/svg%3E");
+    }
+    .hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; z-index: 1; background: radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -60%); }
+    .hero-content { position: relative; z-index: 3; max-width: 860px; padding: 120px 6vw 80px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-bottom: 28px; padding: 7px 20px;
+      border: 1px solid rgba(212,168,67,0.3); border-radius: 30px;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: '✦'; font-size: 0.5rem; }
+    .hero-title { font-size: clamp(3.4rem, 8vw, 7rem); line-height: 1.0; margin-bottom: 30px; color: var(--text); letter-spacing: -0.01em; }
+    .hero-title em { font-style: italic; color: var(--gold); display: block; }
+    .hero-sub { font-size: 1.05rem; font-weight: 300; line-height: 1.85; color: var(--text-dim); max-width: 520px; margin: 0 auto 48px; }
+    .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block; padding: 17px 46px;
+      background: linear-gradient(135deg, var(--honey) 0%, var(--gold) 60%, var(--gold-light) 100%);
+      color: #0A0908; font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      border-radius: var(--r); transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 28px rgba(200,134,10,0.45), 0 0 22px rgba(212,168,67,0.38);
+      animation: btnGlowPulse 2.6s ease-in-out infinite;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 44px rgba(212,168,67,0.75), 0 0 55px rgba(240,200,90,0.55), 0 0 100px rgba(212,168,67,0.28);
+      animation: none;
+    }
+    @keyframes btnGlowPulse {
+      0%,100% { box-shadow: 0 6px 28px rgba(200,134,10,0.45), 0 0 20px rgba(212,168,67,0.32); }
+      50%      { box-shadow: 0 8px 38px rgba(200,134,10,0.7),  0 0 45px rgba(212,168,67,0.6), 0 0 75px rgba(240,200,90,0.22); }
+    }
+    .btn-outline {
+      display: inline-block; padding: 16px 40px;
+      border: 1px solid rgba(212,168,67,0.55);
+      color: var(--gold); font-weight: 500; font-size: 0.7rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      border-radius: var(--r); transition: all 0.3s;
+      box-shadow: 0 0 16px rgba(212,168,67,0.18), inset 0 0 10px rgba(212,168,67,0.04);
+    }
+    .btn-outline:hover {
+      background: rgba(212,168,67,0.1);
+      border-color: var(--gold);
+      box-shadow: 0 0 34px rgba(212,168,67,0.45), 0 0 70px rgba(212,168,67,0.18);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(168,160,144,0.6); font-size: 0.6rem; letter-spacing: 0.25em;
+      text-transform: uppercase; animation: bobble 2.5s ease-in-out infinite;
+    }
+    .scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--gold), transparent); }
+    .hero-scroll { z-index: 3; }
+    @keyframes bobble { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(7px); } }
+
+    /* ═══════════════ HONEY DRIPS ═══════════════ */
+    .honey-drips-scene {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none; z-index: 2; overflow: hidden;
+    }
+    .h-drip-stalk {
+      position: absolute; top: 0;
+      background: linear-gradient(to bottom, rgba(200,134,10,0.95), rgba(212,168,67,0.88));
+      border-radius: 0 0 40% 40%;
+      will-change: height;
+    }
+    .h-drip-blob {
+      position: absolute;
+      border-radius: 50% 50% 50% 50% / 35% 35% 65% 65%;
+      background: radial-gradient(ellipse at 38% 28%, rgba(240,200,90,0.92), rgba(200,134,10,0.90));
+      box-shadow: 0 4px 12px rgba(200,134,10,0.3), inset 0 -3px 5px rgba(160,90,0,0.18);
+      will-change: transform, opacity, top;
+    }
+
+    /* ═══════════════ HONEY GLOW CANVAS ═══════════════ */
+    #honey-glow-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      z-index: 0; pointer-events: none;
+    }
+
+    /* ═══════════════ LEGACY STRIP ═══════════════ */
+    #legacy { background: var(--bg3); padding: 80px 6vw; position: relative; overflow: hidden; }
+    .legacy-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 760px; margin: 0 auto; }
+    .legacy-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--honey); margin-bottom: 12px; }
+    .legacy-title { font-size: clamp(2rem, 4.5vw, 3rem); color: var(--text); line-height: 1.2; margin-bottom: 20px; }
+    .legacy-title span { color: var(--honey); }
+    .divider-honey { width: 70px; height: 3px; margin: 0 auto 28px; background: linear-gradient(to right, var(--honey), var(--gold-light)); border-radius: 2px; }
+    .legacy-desc { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--text-dim); max-width: 600px; margin: 0 auto 40px; }
+    .legacy-stats { display: flex; gap: 60px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+    .ls-item { text-align: center; }
+    .ls-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--honey); line-height: 1; }
+    .ls-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 6px; }
+
+    /* ═══════════════ PRODUCTS ═══════════════ */
+    #products { background: var(--bg); padding: 100px 6vw; position: relative; overflow: hidden; }
+    .sec-header { text-align: center; position: relative; z-index: 1; margin-bottom: 60px; }
+    .sec-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .sec-title { font-size: clamp(2rem, 4vw, 3.2rem); color: var(--text); line-height: 1.15; }
+    .sec-title span { color: var(--gold); font-style: italic; }
+    .divider-gold { width: 60px; height: 2px; margin: 18px auto 24px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+    .sec-sub { font-size: 0.92rem; font-weight: 300; line-height: 1.8; color: var(--text-dim); max-width: 480px; margin: 0 auto; }
+    .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; position: relative; z-index: 1; }
+    .product-card { background: var(--bg3); border: 1px solid rgba(212,168,67,0.1); border-radius: var(--r); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,0.5); border-color: rgba(212,168,67,0.35); }
+    .product-image { height: 360px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .product-image-bg { position: absolute; inset: 0; background: linear-gradient(160deg, var(--bg4) 0%, #2a1e0a 100%); }
+    .product-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform 0.6s ease; }
+    .product-card:hover .product-photo { transform: scale(1.06); }
+    .product-badge { position: absolute; top: 14px; right: 14px; z-index: 2; padding: 4px 10px; background: var(--gold); color: #0A0908; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; }
+    .product-body { padding: 14px 26px 18px; }
+    .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.2; }
+    .product-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.8; color: var(--text-dim); margin-bottom: 20px; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(212,168,67,0.1); }
+    .product-tag { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+    .btn-shop { padding: 9px 20px; background: transparent; border: 1px solid rgba(212,168,67,0.4); color: var(--gold); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; border-radius: var(--r); cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+    .btn-shop:hover { background: rgba(212,168,67,0.12); border-color: var(--gold); }
+    .products-notice { margin-top: 64px; position: relative; z-index: 1; }
+    .products-notice-inner { background: linear-gradient(135deg, rgba(212,168,67,0.04) 0%, rgba(160,120,48,0.07) 50%, rgba(212,168,67,0.04) 100%); border: 1px solid rgba(212,168,67,0.28); border-radius: var(--r); padding: 56px 48px; text-align: center; position: relative; overflow: hidden; }
+    .products-notice-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(212,168,67,0.07) 0%, transparent 70%); pointer-events: none; }
+    .notice-divider { width: 48px; height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 24px; }
+    .notice-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600; color: var(--text); margin-bottom: 18px; line-height: 1.2; position: relative; z-index: 1; }
+    .notice-desc { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: var(--text-dim); max-width: 620px; margin: 0 auto 18px; position: relative; z-index: 1; }
+    .notice-price { font-size: 0.88rem; font-weight: 400; line-height: 1.85; color: var(--text-dim); max-width: 560px; margin: 0 auto 36px; padding: 16px 22px; background: rgba(212,168,67,0.06); border-radius: 2px; border: 1px solid rgba(212,168,67,0.18); position: relative; z-index: 1; }
+    .notice-price strong { color: var(--gold); font-weight: 600; }
+
+    /* ═══════════════ DIFFERENCE ═══════════════ */
+    #difference { background: var(--bg4); border-top: 1px solid rgba(212,168,67,0.1); border-bottom: 1px solid rgba(212,168,67,0.1); padding: 90px 6vw; position: relative; overflow: hidden; }
+    .diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; position: relative; z-index: 1; }
+    .diff-item { text-align: center; }
+    .diff-icon-wrap { width: 80px; height: 80px; margin: 0 auto 22px; border-radius: 50%; border: 1px solid rgba(212,168,67,0.3); background: rgba(212,168,67,0.06); display: flex; align-items: center; justify-content: center; font-size: 2rem; transition: background 0.3s, border-color 0.3s; }
+    .diff-item:hover .diff-icon-wrap { background: rgba(212,168,67,0.14); border-color: var(--gold); }
+    .diff-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+    .diff-desc { font-size: 0.83rem; font-weight: 300; line-height: 1.85; color: var(--text-dim); }
+
+    /* ═══════════════ ABOUT ═══════════════ */
+    #about { background: var(--bg2); padding: 100px 6vw; position: relative; overflow: hidden; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+    .about-image-col { position: relative; }
+    .about-img-frame { position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(160deg, #2a1e0a 0%, #3d2d14 50%, #1a1208 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 20px; }
+    .about-img-frame::before { content: ''; position: absolute; top: -16px; left: -16px; right: 16px; bottom: 16px; border: 1px solid rgba(160,120,48,0.35); border-radius: 4px; z-index: 0; }
+    .about-img-frame .big-bee { font-size: 6rem; position: relative; z-index: 1; }
+    .about-img-frame p { position: relative; z-index: 1; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .about-corner { position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--honey), var(--gold)); opacity: 0.15; }
+    .about-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--honey); margin-bottom: 10px; }
+    .about-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--text); line-height: 1.2; margin-bottom: 20px; }
+    .about-title span { color: var(--honey); }
+    .about-text p { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: var(--text-dim); margin-bottom: 18px; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+    .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .badge { display: flex; align-items: center; gap: 7px; padding: 7px 14px; background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.25); border-radius: 2px; font-size: 0.7rem; font-weight: 500; color: var(--gold-dark); letter-spacing: 0.04em; }
+    .badge .checkmark { color: var(--honey); font-weight: 700; }
+
+    /* ═══════════════ JOURNEY ═══════════════ */
+    #journey { background: var(--bg3); padding: 100px 6vw; position: relative; overflow: hidden; }
+    .journey-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; position: relative; z-index: 1; margin-top: 56px; }
+    .journey-card { background: var(--bg4); border: 1px solid rgba(212,168,67,0.12); border-radius: var(--r); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
+    .journey-card:hover { transform: translateY(-6px); box-shadow: 0 24px 64px rgba(0,0,0,0.55); border-color: rgba(212,168,67,0.4); }
+    .journey-img-wrap { position: relative; overflow: hidden; height: 300px; }
+    .journey-photo { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .journey-card:hover .journey-photo { transform: scale(1.03); }
+    .journey-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,9,8,0.88) 0%, rgba(10,9,8,0.22) 55%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px 22px; pointer-events: none; }
+    .journey-year { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .journey-award { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream2); margin-top: 5px; }
+    .journey-info { padding: 16px 22px 20px; }
+    .journey-event { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.2; }
+    .journey-detail { font-size: 0.8rem; font-weight: 300; line-height: 1.78; color: var(--text-dim); }
+
+    /* ═══════════════ TEAM ═══════════════ */
+    #team { background: var(--bg2); padding: 100px 6vw; position: relative; overflow: hidden; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; position: relative; z-index: 1; }
+    .team-card {
+      background: var(--bg3); border: 1px solid rgba(212,168,67,0.12); border-radius: var(--r);
+      padding: 40px 28px 36px; text-align: center;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .team-card:hover { transform: translateY(-6px); border-color: rgba(212,168,67,0.38); box-shadow: 0 20px 50px rgba(0,0,0,0.45); }
+    .team-photo { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(212,168,67,0.45); margin: 0 auto 22px; display: block; }
+    .team-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.2; }
+    .team-role { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+    .team-divider { width: 40px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 20px; }
+    .team-contact-list { display: flex; flex-direction: column; gap: 12px; }
+    .team-contact-row { display: flex; align-items: center; gap: 10px; justify-content: center; font-size: 0.82rem; }
+    .team-contact-row a { color: var(--text-dim); transition: color 0.2s; }
+    .team-contact-row a:hover { color: var(--gold); }
+    .team-ci-icon { font-size: 0.9rem; flex-shrink: 0; }
+
+    /* ═══════════════ TESTIMONIALS ═══════════════ */
+    #testimonials { background: var(--bg); padding: 100px 6vw; position: relative; overflow: hidden; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; position: relative; z-index: 1; margin-top: 60px; }
+    .testi-grid .testi-card:last-child:nth-child(3n+1) { grid-column: 2; }
+    @keyframes testiShine {
+      0%,100% { box-shadow: 0 0 10px rgba(212,168,67,0.18), 0 0 20px rgba(200,134,10,0.10); border-color: rgba(212,168,67,0.18); }
+      50%     { box-shadow: 0 0 22px rgba(212,168,67,0.42), 0 0 44px rgba(200,134,10,0.22), inset 0 0 14px rgba(212,168,67,0.06); border-color: rgba(212,168,67,0.45); }
+    }
+    .testi-card {
+      background: var(--bg3); border: 1px solid rgba(212,168,67,0.18); border-radius: var(--r);
+      padding: 36px 30px; position: relative; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.25s, border-color 0.25s;
+      animation: testiShine 3.2s ease-in-out infinite;
+    }
+    .testi-card:nth-child(2) { animation-delay: -1.1s; }
+    .testi-card:nth-child(3) { animation-delay: -2.2s; }
+    .testi-card:nth-child(4) { animation-delay: -0.6s; }
+    .testi-card:nth-child(5) { animation-delay: -1.7s; }
+    .testi-card:nth-child(6) { animation-delay: -2.8s; }
+    .testi-card:nth-child(7) { animation-delay: -1.4s; }
+    .testi-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212,168,67,0.8);
+      box-shadow: 0 0 38px rgba(212,168,67,0.65), 0 0 75px rgba(200,134,10,0.35), 0 0 120px rgba(212,168,67,0.18), inset 0 0 28px rgba(212,168,67,0.08);
+      animation: none;
+    }
+    .contact-social-btn.fb-btn {
+      background: #1877F2; border-color: #1877F2; color: #fff;
+    }
+    .contact-social-btn.fb-btn:hover {
+      background: #1463CC; border-color: #1463CC; color: #fff;
+      box-shadow: 0 6px 22px rgba(24,119,242,0.50); transform: translateY(-2px);
+    }
+    .contact-social-btn.ig-btn {
+      background: linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      border-color: transparent; color: #fff;
+    }
+    .contact-social-btn.ig-btn:hover {
+      filter: brightness(1.12); color: #fff;
+      box-shadow: 0 6px 22px rgba(220,39,67,0.50); transform: translateY(-2px);
+    }
+    .contact-social-btn.vb-btn {
+      background: #7360F2; border-color: #7360F2; color: #fff;
+    }
+    .contact-social-btn.vb-btn:hover {
+      background: #5C4ED6; border-color: #5C4ED6; color: #fff;
+      box-shadow: 0 6px 22px rgba(115,96,242,0.50); transform: translateY(-2px);
+    }
+    .testi-quote-mark { position: absolute; top: 16px; left: 22px; font-family: 'Cormorant Garamond', serif; font-size: 6rem; color: rgba(212,168,67,0.08); line-height: 1; pointer-events: none; }
+    .testi-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 14px; letter-spacing: 3px; }
+    .testi-text { font-size: 0.88rem; font-weight: 300; line-height: 1.9; color: var(--text-dim); margin-bottom: 24px; position: relative; z-index: 1; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1rem; color: #0A0908; }
+    .testi-name { font-weight: 600; font-size: 0.85rem; color: var(--text); }
+    .testi-loc { font-size: 0.72rem; color: var(--text-dim); margin-top: 2px; }
+    .fb-rating-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-bottom: 36px; padding: 8px 18px;
+      border: 1px solid rgba(212,168,67,0.2); border-radius: 20px;
+      font-size: 0.68rem; font-weight: 600; color: var(--text-dim);
+      position: relative; z-index: 1;
+    }
+    .fb-rating-badge strong { color: var(--gold); }
+
+    /* ═══════════════ CONTACT ═══════════════ */
+    #contact { background: var(--bg4); padding: 100px 6vw; position: relative; overflow: hidden; }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; position: relative; z-index: 1; }
+    .form-success { display: none; margin-top: 14px; padding: 14px 18px; background: rgba(50,180,80,0.10); border: 1px solid rgba(50,180,80,0.35); border-radius: var(--r); color: #6ecf8a; font-size: 0.82rem; line-height: 1.75; }
+    .form-error   { display: none; margin-top: 14px; padding: 14px 18px; background: rgba(220,60,60,0.08); border: 1px solid rgba(220,60,60,0.30); border-radius: var(--r); color: #e07070; font-size: 0.82rem; line-height: 1.75; }
+    .contact-info-col p { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: var(--text-dim); margin-bottom: 36px; }
+    .contact-items { display: flex; flex-direction: column; gap: 18px; }
+    .contact-item { display: flex; gap: 14px; align-items: center; }
+    .ci-icon { width: 44px; height: 44px; flex-shrink: 0; border: 1px solid rgba(212,168,67,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .ci-text strong { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); margin-bottom: 2px; }
+    .ci-text span { font-size: 0.83rem; color: var(--text-dim); }
+    .contact-social { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+    .contact-social-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border: 1px solid rgba(212,168,67,0.3);
+      border-radius: var(--r); font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); transition: all 0.2s;
+    }
+    .contact-social-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .contact-deco { display: flex; align-items: center; justify-content: center; }
+    .contact-deco-wrap { position: relative; width: 100%; max-width: 400px; margin: 0 auto; }
+    .deco-hc { width: 100%; height: auto; }
+    @keyframes sunRotate { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes glowPulse { 0%,100%{opacity:0.60} 50%{opacity:1} }
+    .deco-sunburst-rays { transform-box: fill-box; transform-origin: center; animation: sunRotate 80s linear infinite; }
+    .deco-glow { animation: glowPulse 4.5s ease-in-out infinite; }
+    .contact-deco-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; width: 100%; }
+    @keyframes beeFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+    .contact-deco-bee { font-size: 3rem; display: block; margin-bottom: 10px; filter: drop-shadow(0 0 14px rgba(212,168,67,0.7)); animation: beeFloat 4s ease-in-out infinite; }
+    .contact-deco-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.95rem, 1.8vw, 1.25rem); color: var(--gold); font-style: italic; line-height: 1.65; text-shadow: 0 0 18px rgba(212,168,67,0.35); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fg { display: flex; flex-direction: column; gap: 5px; }
+    .fg label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); }
+    .fg input, .fg textarea, .fg select { background: var(--bg3); border: 1px solid rgba(212,168,67,0.15); border-radius: var(--r); padding: 13px 16px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text); transition: border-color 0.2s; outline: none; }
+    .fg input::placeholder, .fg textarea::placeholder { color: rgba(168,160,144,0.4); }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: rgba(212,168,67,0.5); }
+    .fg textarea { resize: vertical; min-height: 130px; }
+    .fg select { appearance: none; cursor: pointer; }
+    .fg select option { background: var(--bg3); }
+
+    /* ═══════════════ FOOTER ═══════════════ */
+    footer { background: #080706; border-top: 1px solid rgba(212,168,67,0.1); padding: 70px 6vw 36px; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 60px; margin-bottom: 52px; }
+    .footer-brand-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .footer-brand-logo img { height: 44px; width: 44px; object-fit: contain; border-radius: 50%; }
+    .footer-brand-logo span { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--gold); letter-spacing: 0.12em; }
+    .footer-tagline { font-size: 0.83rem; font-weight: 300; line-height: 1.85; color: var(--text-dim); max-width: 280px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 24px; }
+    .fsoc { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(212,168,67,0.2); display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.8rem; font-weight: 600; transition: all 0.2s; }
+    .fsoc:hover { border-color: var(--gold); color: var(--gold); }
+    .fsoc.fsoc-vb:hover { border-color: #7360F2; color: #7360F2; }
+    .footer-col h4 { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 0.82rem; font-weight: 300; color: var(--text-dim); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 26px; display: flex; align-items: center; justify-content: space-between; font-size: 0.7rem; color: rgba(168,160,144,0.5); }
+
+    /* ═══════════════ ANIMATIONS ═══════════════ */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-left.visible { opacity: 1; transform: translateX(0); }
+    .fade-right { opacity: 0; transform: translateX(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ═══════════════ RESPONSIVE ═══════════════ */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .team-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-center { display: none; }
+      .btn-nav { display: none; }
+      .hamburger { display: flex; }
+      .products-grid { grid-template-columns: 1fr; }
+      .products-notice-inner { padding: 36px 24px; }
+      .diff-grid { grid-template-columns: 1fr; gap: 36px; }
+      .team-grid { grid-template-columns: 1fr; }
+      .journey-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .testi-grid .testi-card:last-child:nth-child(3n+1) { grid-column: auto; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .legacy-stats { gap: 36px; }
+      .banner-jars { gap: 12px; }
+    }
+    @media (max-width: 480px) {
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .hero-title { font-size: 2.8rem; }
+    }
+
+    /* ═══════════════ COPY TOAST ═══════════════ */
+    #sticky-cta {
+      position: fixed; bottom: 32px; right: 28px; z-index: 8888;
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+    #sticky-cta.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .sticky-cta-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 13px 22px;
+      background: linear-gradient(135deg, var(--honey) 0%, var(--gold) 60%, var(--gold-light) 100%);
+      color: #0A0908; font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 0.68rem; letter-spacing: 0.16em;
+      text-transform: uppercase; border-radius: 50px; text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 8px 30px rgba(200,134,10,0.55), 0 0 20px rgba(212,168,67,0.30);
+      animation: btnGlowPulse 2.6s ease-in-out infinite;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .sticky-cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 44px rgba(212,168,67,0.75), 0 0 55px rgba(240,200,90,0.40);
+      animation: none;
+    }
+    #copy-toast {
+      position: fixed; bottom: 36px; left: 50%;
+      transform: translateX(-50%) translateY(14px);
+      background: var(--gold); color: #0A0908;
+      padding: 9px 24px; border-radius: 24px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      pointer-events: none; opacity: 0; z-index: 9999;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      box-shadow: 0 4px 24px rgba(212,168,67,0.5);
+    }
+    #copy-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  </style>
+</head>
+
+<body class="lang-mk">
+
+  <!-- ═══ MOBILE NAV ═══ -->
+  <div class="mobile-nav" id="mobileNav">
+    <span class="mobile-nav-close" onclick="closeMobileNav()">✕</span>
+    <a href="#products" onclick="closeMobileNav()"><span data-mk>Производи</span><span data-en>Products</span><span data-al>Produkte</span></a>
+    <a href="#difference" onclick="closeMobileNav()"><span data-mk>Зошто BOMED</span><span data-en>Why BOMED</span><span data-al>Pse BOMED</span></a>
+    <a href="#about" onclick="closeMobileNav()"><span data-mk>За нас</span><span data-en>About</span><span data-al>Rreth Nesh</span></a>
+    <a href="#journey" onclick="closeMobileNav()"><span data-mk>Патување</span><span data-en>Journey</span><span data-al>Udhëtimi</span></a>
+    <a href="#team" onclick="closeMobileNav()"><span data-mk>Тим</span><span data-en>Team</span><span data-al>Ekipi</span></a>
+    <a href="#testimonials" onclick="closeMobileNav()"><span data-mk>Препораки</span><span data-en>Reviews</span><span data-al>Komente</span></a>
+    <a href="#contact" onclick="closeMobileNav()"><span data-mk>Контакт</span><span data-en>Contact</span><span data-al>Kontakt</span></a>
+    <div class="mobile-lang-toggle">
+      <button class="lang-btn" id="btnMKm" onclick="setLang('mk')">МК</button>
+      <button class="lang-btn" id="btnENm" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btnALm" onclick="setLang('al')">SH</button>
+    </div>
+  </div>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="mainNav">
+    <a href="#" class="nav-logo">
+      <img src="brand_assets/BOMED.jpg" alt="BOMED Logo" />
+      <span class="nav-logo-text">BOMED</span>
+    </a>
+    <ul class="nav-center">
+      <li><a href="#products"><span data-mk>Производи</span><span data-en>Products</span><span data-al>Produkte</span></a></li>
+      <li><a href="#difference"><span data-mk>Зошто BOMED</span><span data-en>Why BOMED</span><span data-al>Pse BOMED</span></a></li>
+      <li><a href="#about"><span data-mk>За нас</span><span data-en>About</span><span data-al>Rreth Nesh</span></a></li>
+      <li><a href="#journey"><span data-mk>Патување</span><span data-en>Journey</span><span data-al>Udhëtimi</span></a></li>
+      <li><a href="#team"><span data-mk>Тим</span><span data-en>Team</span><span data-al>Ekipi</span></a></li>
+      <li><a href="#testimonials"><span data-mk>Препораки</span><span data-en>Reviews</span><span data-al>Komente</span></a></li>
+      <li><a href="#contact"><span data-mk>Контакт</span><span data-en>Contact</span><span data-al>Kontakt</span></a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btnMK" onclick="setLang('mk')">МК</button>
+        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="btnAL" onclick="setLang('al')">SH</button>
+      </div>
+      <a href="#contact" class="btn-nav"><span data-mk>Нарачај</span><span data-en>Order Now</span><span data-al>Porosit</span></a>
+      <div class="hamburger" onclick="openMobileNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-comb"></div>
+    <div class="hero-glow"></div>
+    <div class="honey-drips-scene" id="honeyDripsScene"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow fade-up">
+        <span data-mk>Чист мед · Природно лекување · Македонија</span>
+        <span data-en>Pure Honey · Natural Healing · Macedonia</span>
+        <span data-al>Mjaltë i Pastër · Shërim Natyral · Maqedoni</span>
+      </div>
+      <h1 class="hero-title fade-up">
+        <span data-mk>Природата во<br /><em>секоја капка</em></span>
+        <span data-en>Nature found in<br /><em>every drop</em></span>
+        <span data-al>Natyra në<br /><em>çdo pikë</em></span>
+      </h1>
+      <p class="hero-sub fade-up">
+        <span data-mk>Со децении искуство во пчеларство и природни лекови, BOMED ви нуди чисти пчелни производи со исклучителни лековити својства.</span>
+        <span data-en>With decades of beekeeping experience and natural healing expertise, BOMED brings you pure, extraordinary honey products with remarkable healing properties.</span>
+        <span data-al>Me dekada përvojë bletarie dhe ekspertizë shëruese natyrore, BOMED ju sjell produkte të pastra mjalti me veti të jashtëzakonshme shëruese.</span>
+      </p>
+      <div class="hero-ctas fade-up">
+        <a href="#products" class="btn-primary">
+          <span data-mk>Истражи производи</span>
+          <span data-en>Shop Products</span>
+          <span data-al>Shiko Produktet</span>
+        </a>
+        <a href="#about" class="btn-outline">
+          <span data-mk>Нашата приказна</span>
+          <span data-en>Our Story</span>
+          <span data-al>Historia Jonë</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span data-mk>Скролај</span><span data-en>Scroll</span><span data-al>Rrëshqit</span>
+    </div>
+  </section>
+
+  <!-- ═══ LEGACY STRIP ═══ -->
+  <section id="legacy">
+    <div class="hex-bg"></div>
+    <canvas id="honey-glow-canvas"></canvas>
+    <div class="legacy-inner">
+      <p class="legacy-tag fade-up">
+        <span data-mk>Традиција и квалитет</span><span data-en>Tradition &amp; Quality</span><span data-al>Traditë &amp; Cilësi</span>
+      </p>
+      <h2 class="legacy-title fade-up">
+        <span data-mk>Генерации <span>пчеларско искуство</span></span>
+        <span data-en>Generations of <span>beekeeping experience</span></span>
+        <span data-al>Gjenerata me <span>përvojë bletarie</span></span>
+      </h2>
+      <div class="divider-honey"></div>
+      <p class="legacy-desc fade-up">
+        <span data-mk>BOMED е семеен бренд роден од страст кон пчелите и длабока почит кон природата. Нашата приказна почнува во срцето на македонските планини, каде генерации пчелари ги чуваат тајните на чистиот мед и природното лекување.</span>
+        <span data-en>BOMED is a family brand born from passion for bees and deep respect for nature. Our story begins in the heart of the Macedonian mountains, where generations of beekeepers have guarded the secrets of pure honey and natural healing.</span>
+        <span data-al>BOMED është një markë familjare e lindur nga pasioni për bletët dhe respekti i thellë ndaj natyrës. Historia jonë fillon në zemrën e maleve maqedonase, ku gjenerata bletarësh kanë ruajtur sekretet e mjaltit të pastër dhe shërimit natyror.</span>
+      </p>
+      <div class="legacy-stats fade-up">
+        <div class="ls-item">
+          <div class="ls-num" data-count="25" data-suffix="+">25+</div>
+          <div class="ls-label"><span data-mk>Години искуство</span><span data-en>Years Experience</span><span data-al>Vite Përvojë</span></div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num" data-count="100" data-suffix="%">100%</div>
+          <div class="ls-label"><span data-mk>Природни состојки</span><span data-en>Natural Ingredients</span><span data-al>Përbërës Natyralë</span></div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num" data-count="30" data-suffix="+">30+</div>
+          <div class="ls-label"><span data-mk>Видови производи</span><span data-en>Product Varieties</span><span data-al>Varietete Produktesh</span></div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num" data-count="1000" data-suffix="+">1000+</div>
+          <div class="ls-label"><span data-mk>Задоволни клиенти</span><span data-en>Happy Customers</span><span data-al>Klientë të Lumtur</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRODUCTS ═══ -->
+  <section id="products">
+    <div class="hex-bg"></div>
+    <div class="sec-header fade-up">
+      <p class="sec-tag"><span data-mk>Најпродавани</span><span data-en>Best Sellers</span><span data-al>Më të Shitura</span></p>
+      <h2 class="sec-title">
+        <span data-mk>Дарови на <span>природата</span></span>
+        <span data-en>Gifts of <span>nature</span></span>
+        <span data-al>Dhuratat e <span>natyrës</span></span>
+      </h2>
+      <div class="divider-gold"></div>
+      <p class="sec-sub">
+        <span data-mk>Секој наш производ е резултат на внимателно пчеларство и природна преработка.</span>
+        <span data-en>Each product is the result of careful beekeeping and natural processing.</span>
+        <span data-al>Çdo produkt ynë është rezultat i bletarisë së kujdesshme dhe përpunimit natyror.</span>
+      </p>
+    </div>
+    <div class="products-grid">
+
+      <!-- Best Seller -->
+      <div class="product-card fade-up">
+        <div class="product-image">
+          <div class="product-image-bg"></div>
+          <img src="queen.jpg" alt="BOMED Bestseller Collection" class="product-photo" />
+          <span class="product-badge"><span data-mk>Бестселер</span><span data-en>Best Seller</span><span data-al>Bestseller</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name"><span data-mk>Бестселер Колекција</span><span data-en>Bestseller Collection</span><span data-al>Koleksioni Bestseller</span></div>
+          <p class="product-desc">
+            <span data-mk>Мајсторска мешавина од чист мед, лимон, цимет и ѓумбир — најмоќните состојки на природата, обединети во еден тегла.</span>
+            <span data-en>A masterful blend of pure honey, lemon, cinnamon and ginger — nature's most potent ingredients, unified in a single jar.</span>
+            <span data-al>Një përzierje e shkëlqyer e mjaltit të pastër, limonit, kanellës dhe xhenxhefilit — përbërësit më të fuqishëm të natyrës, të unifikuar në një kavanoz.</span>
+          </p>
+          <div class="product-footer" style="padding-top:0;border-top:none;">
+            <span class="product-tag"><span data-mk>→ Највеќе нарачувани</span><span data-en>→ Most Ordered</span><span data-al>→ Më Të Porositura</span></span>
+            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Immunity -->
+      <div class="product-card fade-up">
+        <div class="product-image">
+          <div class="product-image-bg"></div>
+          <img src="immm.jpg" alt="BOMED Immunity — Мед и Млеч" class="product-photo" style="object-position: center 70%;" />
+          <span class="product-badge"><span data-mk>Имунитет</span><span data-en>Immunity</span><span data-al>Imunitet</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name"><span data-mk>Мед и Матичен Млеч</span><span data-en>Honey &amp; Royal Jelly</span><span data-al>Mjaltë &amp; Geleja Mbretërore</span></div>
+          <p class="product-desc">
+            <span data-mk>Формулиран за одржување на вашата енергија во текот на целиот ден, додека моќно го зајакнува имунолошкиот систем со најфин матичен млеч.</span>
+            <span data-en>Formulated to sustain your energy throughout the entire day while powerfully reinforcing your immune system with the finest royal jelly.</span>
+            <span data-al>Formuluar për të mbajtur energjinë tuaj gjatë gjithë ditës, ndërsa forcon fuqishëm sistemin tuaj imunitar me gjelenë mbretërore më të mirë.</span>
+          </p>
+          <div class="product-footer" style="padding-top:0;border-top:none;">
+            <span class="product-tag"><span data-mk>→ Природна заштита</span><span data-en>→ Natural Protection</span><span data-al>→ Mbrojtje Natyrale</span></span>
+            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium -->
+      <div class="product-card fade-up">
+        <div class="product-image">
+          <div class="product-image-bg"></div>
+          <img src="immunity.jpg" alt="BOMED Premium — Мед со Чуваркука" class="product-photo" />
+          <span class="product-badge"><span data-mk>Премиум</span><span data-en>Premium</span><span data-al>Premium</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name"><span data-mk>Мед со Чуваркука</span><span data-en>Honey with Houseleek</span><span data-al>Mjaltë Premium</span></div>
+          <p class="product-desc">
+            <span data-mk>Традиционален природен лек кој го поддржува уринарниот систем и промовира здраво варење преку чистата синергија на чуваркуката и медот.</span>
+            <span data-en>A time-honoured natural remedy that supports urinary tract health and promotes healthy digestion through the pure synergy of houseleek and honey.</span>
+            <span data-al>Një ilaç natyror i sprovuar që mbështet shëndetin e traktit urinar dhe promovon tretje të shëndetshme nëpërmjet sinergisë së pastër të bimës dhe mjaltit.</span>
+          </p>
+          <div class="product-footer" style="padding-top:0;border-top:none;">
+            <span class="product-tag"><span data-mk>→ Ексклузивно</span><span data-en>→ Exclusive</span><span data-al>→ Ekskluzive</span></span>
+            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regular / Full Range -->
+      <div class="product-card fade-up">
+        <div class="product-image">
+          <div class="product-image-bg"></div>
+          <img src="nattttu.jpg" alt="BOMED Full Product Range" class="product-photo" />
+          <span class="product-badge"><span data-mk>Природно</span><span data-en>Natural</span><span data-al>Natyral</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name"><span data-mk>Природни Производи</span><span data-en>Natural Products</span><span data-al>Produkte Natyrale</span></div>
+          <p class="product-desc">
+            <span data-mk>Внимателно селектиран избор на нашите најфини природни производи — чисти, непреработени и директно од нетакнатите македонски планини.</span>
+            <span data-en>A carefully curated selection of our finest natural offerings — pure, unprocessed and sourced directly from the pristine Macedonian highlands.</span>
+            <span data-al>Një përzgjedhje e kujdesshme e ofertave tona natyrore më të mira — të pastra, të papërpunuara dhe të siguruara drejtpërdrejt nga malet e paprekura maqedonase.</span>
+          </p>
+          <div class="product-footer" style="padding-top:0;border-top:none;">
+            <span class="product-tag"><span data-mk>→ Широк избор</span><span data-en>→ Wide Selection</span><span data-al>→ Zgjedhje e Gjerë</span></span>
+            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colourful Honey -->
+      <div class="product-card fade-up">
+        <div class="product-image">
+          <div class="product-image-bg"></div>
+          <img src="colorful.jpg" alt="BOMED Colourful Honey" class="product-photo" />
+          <span class="product-badge"><span data-mk>Шарен мед</span><span data-en>Colourful Honey</span><span data-al>Mjaltë me Ngjyra</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name"><span data-mk>Шарен Мед</span><span data-en>Colourful Honey</span><span data-al>Mjaltë me Ngjyra</span></div>
+          <p class="product-desc">
+            <span data-mk>Живописен асортиман на ароматични сорти мед, секоја со свој уникатен карактер — позната по природното олеснување при мигренозни напади.</span>
+            <span data-en>A vibrant assortment of flavourful honey varieties, each with its own unique character — and known for providing natural relief from migraine attacks.</span>
+            <span data-al>Një asortiment i gjallë i varieteteve të mjaltit aromatik, secila me karakterin e saj unik — e njohur për lehtësimin natyror nga sulmet migrenoze.</span>
+          </p>
+          <div class="product-footer" style="padding-top:0;border-top:none;">
+            <span class="product-tag"><span data-mk>→ Разновидни сорти</span><span data-en>→ Variety of Sorts</span><span data-al>→ Varietete të Ndryshme</span></span>
+            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Healing Lotion -->
+      <div class="product-card fade-up">
+        <div class="product-image">
+          <div class="product-image-bg"></div>
+          <img src="healinglotion.jpg" alt="BOMED Healing Lotion" class="product-photo" />
+          <span class="product-badge"><span data-mk>Лековита крема</span><span data-en>Healing Lotion</span><span data-al>Krem Shërues</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name"><span data-mk>Лековита Крема</span><span data-en>Healing Lotion</span><span data-al>Krem Shërues</span></div>
+          <p class="product-desc">
+            <span data-mk>Хранлива природна крема создадена да ја ревитализира и омекне кожата, додека нуди смирувачко олеснување при болки во зглобовите и грбот.</span>
+            <span data-en>A nourishing natural lotion crafted to revitalise and soften the skin while delivering soothing relief for joint discomfort and back pain.</span>
+            <span data-al>Një locion natyror ushqyes i krijuar për të ringjallur dhe zbutur lëkurën, ndërsa ofron lehtësim qetësues për shqetësimet e kyçeve dhe dhimbjet e shpinës.</span>
+          </p>
+          <div class="product-footer" style="padding-top:0;border-top:none;">
+            <span class="product-tag"><span data-mk>→ Природна нега</span><span data-en>→ Natural Care</span><span data-al>→ Kujdes Natyror</span></span>
+            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Propolis Spray -->
+      <div class="product-card fade-up">
+        <div class="product-image">
+          <div class="product-image-bg"></div>
+          <img src="spray.jpg" alt="BOMED Propolis Spray" class="product-photo" />
+          <span class="product-badge"><span data-mk>Прополис спреј</span><span data-en>Propolis Spray</span><span data-al>Sprej Propolis</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name"><span data-mk>Прополис Спреј</span><span data-en>Propolis Spray</span><span data-al>Sprej Propolisi</span></div>
+          <p class="product-desc">
+            <span data-mk>Потентен спреј на база на прополис кој го зајакнува имунолошкиот систем и ги смирува иритациите и воспаленијата во пределот на лицето и грлото.</span>
+            <span data-en>A potent propolis-based oral spray that strengthens the immune system and soothes irritation and inflammation around the face and throat.</span>
+            <span data-al>Një sprej oral i fuqishëm me bazë propolisi që forcon sistemin imunitar dhe qetëson irritimin dhe inflamacionin rreth fytyrës dhe fytit.</span>
+          </p>
+          <div class="product-footer" style="padding-top:0;border-top:none;">
+            <span class="product-tag"><span data-mk>→ Нос и грло</span><span data-en>→ Nose &amp; Throat</span><span data-al>→ Hundë &amp; Fyt</span></span>
+            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Face Cream -->
+      <div class="product-card fade-up">
+        <div class="product-image">
+          <div class="product-image-bg"></div>
+          <img src="face.jpg" alt="BOMED Face Cream" class="product-photo" />
+          <span class="product-badge"><span data-mk>Крема за лице</span><span data-en>Face Cream</span><span data-al>Krem për Fytyrë</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name"><span data-mk>Крема за Лице</span><span data-en>Face Cream</span><span data-al>Krem për Fytyrë</span></div>
+          <p class="product-desc">
+            <span data-mk>Луксузна крема за лице збогатена со мед која длабоко хидрира, активно спречува акни и остава тенот видливо помазен и посјаен.</span>
+            <span data-en>A luxurious honey-infused face cream that deeply hydrates the skin, actively prevents breakouts and leaves your complexion visibly smoother and more radiant.</span>
+            <span data-al>Një krem luksoz për fytyrë i pasuruar me mjaltë që hidraton thellë lëkurën, parandalon aktivisht puçrrat dhe lë tiparet tuaja dukshëm më të lëmuara dhe të ndritshme.</span>
+          </p>
+          <div class="product-footer" style="padding-top:0;border-top:none;">
+            <span class="product-tag"><span data-mk>→ Природна козметика</span><span data-en>→ Natural Cosmetics</span><span data-al>→ Kozmetikë Natyrale</span></span>
+            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- More Products Notice -->
+    <div class="products-notice fade-up">
+      <div class="products-notice-inner">
+        <div class="notice-divider"></div>
+        <h3 class="notice-title">
+          <span data-mk>Имаме многу повеќе производи</span>
+          <span data-en>We Have Many More Products</span>
+          <span data-al>Kemi Shumë Më Tepër Produkte</span>
+        </h3>
+        <p class="notice-desc">
+          <span data-mk>На оваа страница прикажуваме само дел од нашиот богат асортиман. Имаме многу повеќе производи кои не се прикажани овде — различни видови мед, специјални мешавини, сезонски производи и уште многу повеќе. Доколку сакате да дознаете повеќе или да направите нарачка, слободно контактирајте не.</span>
+          <span data-en>On this page we showcase only a selection of our rich product range. We have many more products not listed here — different honey varieties, special blends, seasonal offerings and much more. If you would like to find out more or place an order, please do not hesitate to contact us.</span>
+          <span data-al>Në këtë faqe shfaqim vetëm një pjesë të gamës sonë të pasur të produkteve. Kemi shumë produkte të tjera që nuk tregohen këtu — lloje të ndryshme mjalti, përzierje speciale, oferta sezonale dhe shumë më tepër. Nëse dëshironi të mësoni më shumë ose të bëni një porosi, mos ngurroni të na kontaktoni.</span>
+        </p>
+        <p class="notice-price">
+          <span data-mk>Цените ги договараме директно — контактирајте не и ќе ви помогнеме да изберете најдобро за вас.</span>
+          <span data-en>Pricing is discussed directly — reach out and we will help you find the best option for your needs.</span>
+          <span data-al>Çmimet i diskutojmë drejtpërdrejt — na kontaktoni dhe do t'ju ndihmojmë të zgjidhni më të mirën për ju.</span>
+        </p>
+        <div style="margin-bottom:28px;padding:18px 24px;background:rgba(212,168,67,0.06);border:1px solid rgba(212,168,67,0.25);border-radius:3px;position:relative;z-index:1;">
+          <p style="font-size:0.85rem;line-height:1.85;color:var(--text-dim);margin:0;">
+            <strong style="color:var(--gold);display:block;margin-bottom:6px;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;">
+              <span data-mk>💬 Како да нарачате</span><span data-en>💬 How to Order</span><span data-al>💬 Si të Porosisni</span>
+            </strong>
+            <span data-mk>Спремни сте да нарачате или сакате да дознаете повеќе? Контактирајте не — одговараме брзо. Најдете не на <strong style="color:var(--gold);">Facebook</strong>, <strong style="color:var(--gold);">Instagram</strong>, по <strong style="color:var(--gold);">е-пошта</strong> или на <strong style="color:var(--gold);">телефон</strong>.</span>
+            <span data-en>Ready to order or want to know more? Just reach out — we reply fast. Find us on <strong style="color:var(--gold);">Facebook</strong>, <strong style="color:var(--gold);">Instagram</strong>, by <strong style="color:var(--gold);">email</strong> or <strong style="color:var(--gold);">phone</strong>.</span>
+            <span data-al>Gati për të porositur ose dëshironi të dini më shumë? Na kontaktoni — përgjigjemi shpejt. Na gjeni në <strong style="color:var(--gold);">Facebook</strong>, <strong style="color:var(--gold);">Instagram</strong>, me <strong style="color:var(--gold);">email</strong> ose <strong style="color:var(--gold);">telefon</strong>.</span>
+          </p>
+        </div>
+        <a href="#contact" class="btn-primary" style="display:inline-block;">
+          <span data-mk>Контактирајте не</span>
+          <span data-en>Contact Us</span>
+          <span data-al>Na Kontaktoni</span>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══ THE DIFFERENCE ═══ -->
+  <section id="difference">
+    <div class="hex-bg"></div>
+    <div class="sec-header fade-up">
+      <p class="sec-tag"><span data-mk>Зошто BOMED</span><span data-en>The BOMED Difference</span><span data-al>Ndryshimi Ynë</span></p>
+      <h2 class="sec-title">
+        <span data-mk>Разликата во <span>секој детал</span></span>
+        <span data-en>The difference in <span>every detail</span></span>
+        <span data-al>Ndryshimi në <span>çdo detaj</span></span>
+      </h2>
+      <div class="divider-gold"></div>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-item fade-up">
+        <div class="diff-icon-wrap">🐝</div>
+        <div class="diff-title"><span data-mk>Директно од природата</span><span data-en>Straight from nature</span><span data-al>Drejtpërdrejt nga natyra</span></div>
+        <p class="diff-desc"><span data-mk>Нашите производи никогаш не се обработени термички над 40°C — сите живи ензими и витамини се зачувани.</span><span data-en>Our products are never heat-processed above 40°C — all living enzymes and vitamins remain intact.</span><span data-al>Produktet tona nuk përpunohen kurrë termikisht mbi 40°C — të gjithë enzimat dhe vitaminat e gjalla mbeten të paprekura.</span></p>
+      </div>
+      <div class="diff-item fade-up">
+        <div class="diff-icon-wrap">🏔️</div>
+        <div class="diff-title"><span data-mk>Македонски планини</span><span data-en>Macedonian Highlands</span><span data-al>Malet Maqedonase</span></div>
+        <p class="diff-desc"><span data-mk>Нашите кошници се на над 1000 метри, далеку од загадување — во недопрената македонска природа.</span><span data-en>Our hives sit above 1000m elevation, far from any pollution — in pristine Macedonian nature.</span><span data-al>Kosherët tona janë mbi 1000m lartësi, larg çdo ndotjeje — në natyrën e paprekur maqedonase.</span></p>
+      </div>
+      <div class="diff-item fade-up">
+        <div class="diff-icon-wrap">🔬</div>
+        <div class="diff-title"><span data-mk>Тестирано и верификувано</span><span data-en>Tested &amp; Verified</span><span data-al>Testuar &amp; Verifikuar</span></div>
+        <p class="diff-desc"><span data-mk>Секоја серија е анализирана за чистота и квалитет пред да стигне до вас. Квалитетот е наш стандард.</span><span data-en>Every batch is analyzed for purity and quality before it reaches you. Quality is our standard, not an option.</span><span data-al>Çdo seri analizohet për pastërti dhe cilësi para se të arrijë tek ju. Cilësia është standardi ynë, jo një opsion.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="hex-bg"></div>
+    <div class="about-grid">
+      <div class="about-image-col fade-left">
+        <div class="about-img-frame">
+          <img src="fammmmm.jpg" alt="BOMED Family"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;z-index:1;" />
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:14px 20px;background:linear-gradient(to top,rgba(10,9,8,0.75),transparent);z-index:2;">
+            <p style="margin:0;font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);"><span data-mk>Традиција на квалитет</span><span data-en>A tradition of quality</span><span data-al>Një traditë cilësie</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="about-text-col fade-right">
+        <p class="about-tag"><span data-mk>За нас</span><span data-en>About Us</span><span data-al>Rreth Nesh</span></p>
+        <h2 class="about-title">
+          <span data-mk>Повеќе од <span>дваесет и пет</span> години во служба на природата</span>
+          <span data-en>More than <span>twenty-five years</span> in service of nature</span>
+          <span data-al>Më shumë se <span>njëzet e pesë vjet</span> në shërbim të natyrës</span>
+        </h2>
+        <div class="divider-honey" style="margin:16px 0 24px;"></div>
+        <div class="about-text">
+          <p>
+            <span data-mk>BOMED е семеен бренд роден од страст кон пчелите и длабока почит кон природата. Нашата приказна почнува во срцето на македонските планини, каде генерации пчелари ги чувале тајните на чистиот мед.</span>
+            <span data-en>BOMED is a family brand born from a passion for bees and deep respect for nature. Our story begins in the heart of the Macedonian mountains, where generations of beekeepers have guarded the secrets of pure honey.</span>
+            <span data-al>BOMED është një markë familjare e lindur nga pasioni për bletët dhe respekti i thellë ndaj natyrës. Historia jonë fillon në zemrën e maleve maqedonase, ku gjenerata bletarësh kanë ruajtur sekretet e mjaltit të pastër.</span>
+          </p>
+          <p>
+            <span data-mk>Со <strong>над 25 години искуство</strong>, нашите производи се создадени без компромис — само природни состојки, собрани во вистинскиот момент, со цел да ги зачуваат сите лековити вредности.</span>
+            <span data-en>With <strong>over 25 years of experience</strong>, our products are crafted without compromise — only natural ingredients, harvested at the right moment, preserving every healing property.</span>
+            <span data-al>Me <strong>mbi 25 vjet përvojë</strong>, produktet tona krijohen pa kompromis — vetëm përbërës natyralë, të mbledhur në momentin e duhur, duke ruajtur çdo veti shëruese.</span>
+          </p>
+          <p>
+            <span data-mk>Верувааме дека природата нуди одговор на многу прашања. Нашата мисија е да ве поврземе со тие одговори — чисто, искрено и природно.</span>
+            <span data-en>We believe nature holds the answer to many questions. Our mission is to connect you with those answers — purely, honestly, and naturally.</span>
+            <span data-al>Besojmë se natyra mban përgjigjen për shumë pyetje. Misioni ynë është t'ju lidhim me ato përgjigje — pastër, sinqerisht dhe natyrshëm.</span>
+          </p>
+        </div>
+        <div class="about-badges">
+          <div class="badge"><span class="checkmark">✓</span><span data-mk>Без конзерванси</span><span data-en>Preservative-free</span><span data-al>Pa konservantë</span></div>
+          <div class="badge"><span class="checkmark">✓</span><span data-mk>Сертифицирано природно</span><span data-en>Certified natural</span><span data-al>I çertifikuar natyror</span></div>
+          <div class="badge"><span class="checkmark">✓</span><span data-mk>Семеена традиција</span><span data-en>Family tradition</span><span data-al>Traditë familjare</span></div>
+          <div class="badge"><span class="checkmark">✓</span><span data-mk>Македонски планини</span><span data-en>Macedonian mountains</span><span data-al>Malet maqedonase</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ JOURNEY ═══ -->
+  <section id="journey">
+    <div class="hex-bg"></div>
+    <div class="sec-header fade-up">
+      <p class="sec-tag"><span data-mk>Признанија &amp; Настани</span><span data-en>Awards &amp; Events</span><span data-al>Çmime &amp; Ngjarje</span></p>
+      <h2 class="sec-title">
+        <span data-mk>Горди <span>моменти</span></span>
+        <span data-en>Proud <span>moments</span></span>
+        <span data-al>Momente <span>krenare</span></span>
+      </h2>
+      <div class="divider-gold"></div>
+      <p class="sec-sub">
+        <span data-mk>Од локалните саеми до меѓународните изложби — секој настан е доказ за нашата посветеност на квалитетот.</span>
+        <span data-en>From local fairs to international exhibitions — every event is proof of our dedication to quality.</span>
+        <span data-al>Nga panairet lokale deri te ekspozitat ndërkombëtare — çdo ngjarje është dëshmi e përkushtimit tonë ndaj cilësisë.</span>
+      </p>
+    </div>
+    <div class="journey-grid">
+
+      <div class="journey-card fade-up">
+        <div class="journey-img-wrap">
+          <img src="saemm.jpg" alt="Tetovo Honey Awards 2019" class="journey-photo" />
+          <div class="journey-overlay">
+            <div class="journey-year">2019</div>
+            <div class="journey-award">🏆 <span data-mk>Златна награда</span><span data-en>Gold Award</span><span data-al>Çmim Ari</span></div>
+          </div>
+        </div>
+        <div class="journey-info">
+          <div class="journey-event">Tetovo Honey Awards</div>
+          <p class="journey-detail">
+            <span data-mk>Бојан &amp; Ратко Исовски ја освоија Златната награда за повеќецветен мед — прво големо признание кое ги постави темелите на BOMED.</span>
+            <span data-en>Bojan &amp; Ratko Isoski won the Gold Award for multifloral honey — the first major recognition that laid the foundations of BOMED.</span>
+            <span data-al>Bojan &amp; Ratko Isoski fituan Çmimin Ari për mjaltë shumëluletor — njohja e parë e madhe që vendosi themelet e BOMED.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="journey-card fade-up">
+        <div class="journey-img-wrap">
+          <img src="saem.jpg" alt="Agro Fair Strumica 2023" class="journey-photo" />
+          <div class="journey-overlay">
+            <div class="journey-year">2023</div>
+            <div class="journey-award">🥇 <span data-mk>Златен медал</span><span data-en>Gold Medal</span><span data-al>Medalje Ari</span></div>
+          </div>
+        </div>
+        <div class="journey-info">
+          <div class="journey-event"><span data-mk>Агро Саем Струмица</span><span data-en>Agro Fair Strumica</span><span data-al>Panairi Agro Strumica</span></div>
+          <p class="journey-detail">
+            <span data-mk>Сертификат за квалитет и Златен медал за повеќецветен мед — уште еден врв во нашата приказна.</span>
+            <span data-en>Quality Certificate and Gold Medal for multifloral honey — another milestone in our story.</span>
+            <span data-al>Certifikatë Cilësie dhe Medalje Ari për mjaltë shumëluletor — edhe një moment kulminant në historinë tonë.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="journey-card fade-up">
+        <div class="journey-img-wrap">
+          <img src="saemmm.jpg" alt="BeeFest 2025 Belgrade" class="journey-photo" />
+          <div class="journey-overlay">
+            <div class="journey-year">2025</div>
+            <div class="journey-award">🐝 <span data-mk>Меѓународна изложба</span><span data-en>International Exhibition</span><span data-al>Ekspozitë Ndërkombëtare</span></div>
+          </div>
+        </div>
+        <div class="journey-info">
+          <div class="journey-event">BeeFest 2025 — <span data-mk>Белград</span><span data-en>Belgrade</span><span data-al>Beograd</span></div>
+          <p class="journey-detail">
+            <span data-mk>BOMED меѓу елитата на пчеларите на Балканот — меѓународна изложба во Хјат Риџенси, Белград.</span>
+            <span data-en>BOMED among the beekeeping elite of the Balkans — international exhibition at the Hyatt Regency, Belgrade.</span>
+            <span data-al>BOMED ndër elitën e bletarëve të Ballkanit — ekspozitë ndërkombëtare në Hyatt Regency, Beograd.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="journey-card fade-up">
+        <div class="journey-img-wrap">
+          <img src="saemmmm.jpg" alt="BeeFest 2025 Belgrade — Ratko Isoski" class="journey-photo" />
+          <div class="journey-overlay">
+            <div class="journey-year">2025</div>
+            <div class="journey-award">🏅 <span data-mk>Претставување на Македонија</span><span data-en>Representing Macedonia</span><span data-al>Duke Përfaqësuar Maqedoninë</span></div>
+          </div>
+        </div>
+        <div class="journey-info">
+          <div class="journey-event"><span data-mk>Ратко Исовски — Белград</span><span data-en>Ratko Isoski — Belgrade</span><span data-al>Ratko Isoski — Beograd</span></div>
+          <p class="journey-detail">
+            <span data-mk>Ратко Исовски на меѓународниот BeeFest во Белград — претставувајќи ги вредностите на македонското пчеларство.</span>
+            <span data-en>Ratko Isoski at the international BeeFest in Belgrade — representing the values of Macedonian beekeeping.</span>
+            <span data-al>Ratko Isoski në BeeFest ndërkombëtar në Beograd — duke përfaqësuar vlerat e bletarisë maqedonase.</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ TEAM ═══ -->
+  <section id="team">
+    <div class="hex-bg"></div>
+    <div class="sec-header fade-up">
+      <p class="sec-tag"><span data-mk>Семејство Исовски</span><span data-en>The Isovski Family</span><span data-al>Familja Isovski</span></p>
+      <h2 class="sec-title">
+        <span data-mk>Запознајте го <span>нашиот тим</span></span>
+        <span data-en>Meet <span>our team</span></span>
+        <span data-al>Njohuni me <span>ekipin tonë</span></span>
+      </h2>
+      <div class="divider-gold"></div>
+      <p class="sec-sub">
+        <span data-mk>Секогаш достапни за вас — поставете прашање, направете нарачка или само кажете здраво.</span>
+        <span data-en>Always available for you — ask a question, place an order, or simply say hello.</span>
+        <span data-al>Gjithmonë në dispozicion për ju — bëni një pyetje, bëni një porosi ose thjesht thoni përshëndetje.</span>
+      </p>
+    </div>
+    <div class="team-grid">
+
+      <div class="team-card fade-up">
+        <img src="ratko.jpg" alt="Ratko Isovski" class="team-photo" onerror="this.style.background='linear-gradient(135deg,#A07830,#D4A843)';this.src='';" />
+        <div class="team-name">Ратко Исовски<br /><span style="font-size:0.75em;font-style:italic;font-family:Montserrat,sans-serif;">Ratko Isovski</span></div>
+        <div class="team-role"><span data-mk>Основач &amp; Пчелар</span><span data-en>Founder &amp; Beekeeper</span><span data-al>Themelues &amp; Bletari</span></div>
+        <div class="team-divider"></div>
+        <div class="team-contact-list">
+          <div class="team-contact-row">
+            <span class="team-ci-icon">📱</span>
+            <a href="tel:+38970224722" data-copy-label="Number copied!" onclick="copyContact('+38970224722',this)">+389 70 224 722</a>
+          </div>
+          <div class="team-contact-row">
+            <span class="team-ci-icon">📧</span>
+            <a href="mailto:tanjaisovska@t-home.mk" data-copy-label="Email copied!" onclick="copyContact('tanjaisovska@t-home.mk',this)">tanjaisovska@t-home.mk</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card fade-up">
+        <img src="tanja.jpg" alt="Tanja Isovska" class="team-photo" onerror="this.style.background='linear-gradient(135deg,#A07830,#D4A843)';this.src='';" />
+        <div class="team-name">Тања Исовска<br /><span style="font-size:0.75em;font-style:italic;font-family:Montserrat,sans-serif;">Tanja Isovska</span></div>
+        <div class="team-role"><span data-mk>Менаџер</span><span data-en>Manager</span><span data-al>Menaxhere</span></div>
+        <div class="team-divider"></div>
+        <div class="team-contact-list">
+          <div class="team-contact-row">
+            <span class="team-ci-icon">📱</span>
+            <a href="tel:+38971224722" data-copy-label="Number copied!" onclick="copyContact('+38971224722',this)">+389 71 224 722</a>
+          </div>
+          <div class="team-contact-row">
+            <span class="team-ci-icon">📧</span>
+            <a href="mailto:tanjaisovska@t-home.mk" data-copy-label="Email copied!" onclick="copyContact('tanjaisovska@t-home.mk',this)">tanjaisovska@t-home.mk</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card fade-up">
+        <img src="boki.jpg" alt="Bojan Isovski" class="team-photo" onerror="this.style.background='linear-gradient(135deg,#A07830,#D4A843)';this.src='';" />
+        <div class="team-name">Бојан Исовски<br /><span style="font-size:0.75em;font-style:italic;font-family:Montserrat,sans-serif;">Bojan Isovski</span></div>
+        <div class="team-role"><span data-mk>Продажба &amp; Контакт</span><span data-en>Sales &amp; Contact</span><span data-al>Shitje &amp; Kontakt</span></div>
+        <div class="team-divider"></div>
+        <div class="team-contact-list">
+          <div class="team-contact-row">
+            <span class="team-ci-icon">📱</span>
+            <a href="tel:+38977913310" data-copy-label="Number copied!" onclick="copyContact('+38977913310',this)">+389 77 913 310</a>
+          </div>
+          <div class="team-contact-row">
+            <span class="team-ci-icon">📧</span>
+            <a href="mailto:tanjaisovska@t-home.mk" data-copy-label="Email copied!" onclick="copyContact('tanjaisovska@t-home.mk',this)">tanjaisovska@t-home.mk</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS ═══ -->
+  <section id="testimonials">
+    <div class="hex-bg"></div>
+    <div class="sec-header fade-up">
+      <p class="sec-tag"><span data-mk>Препораки</span><span data-en>Testimonials</span><span data-al>Dëshmitë</span></p>
+      <h2 class="sec-title">
+        <span data-mk>Што велат <span>нашите клиенти</span></span>
+        <span data-en>What our <span>customers say</span></span>
+        <span data-al>Çfarë thonë <span>klientët tanë</span></span>
+      </h2>
+      <div class="divider-gold"></div>
+      <p class="sec-sub fade-up">
+        <span data-mk>Личен избор на нашите најдобри рецензии — избрани од повеќе од 20 задоволни клиенти.</span>
+        <span data-en>A personal selection of our finest reviews — handpicked from over 20 happy customers.</span>
+        <span data-al>Një zgjedhje personale e vlerësimeve tona më të mira — zgjedhur nga mbi 20 klientë të lumtur.</span>
+      </p>
+      <div class="fb-rating-badge fade-up">
+        <span>📘 Facebook</span>
+        <strong>100%</strong>
+        <span data-mk>препорачуваат · 20 рецензии</span>
+        <span data-en>recommend · 20 reviews</span>
+        <span data-al>rekomandojnë · 20 vlerësime</span>
+        &nbsp;★★★★★
+      </div>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card fade-up">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">
+          <span data-mk>„Едноставно најдобар. Медот со матичен млеч направи чуда за нашиот имунолошки систем. Срдечна благодарност."</span>
+          <span data-en>"Simply the best. The honey with royal jelly has done wonders for our immune system. A heartfelt thank you."</span>
+          <span data-al>„Thjesht më i miri. Mjalti me gjelenë mbretërore ka bërë mrekulli për sistemin tonë imunitar. Një falënderim i sinqertë."</span>
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">Х.Т.</div>
+          <div>
+            <div class="testi-name">Hristina T.</div>
+            <div class="testi-loc">📘 Facebook</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">
+          <span data-mk>„Го сакам BOMED — навистина најдобриот од најдобрите."</span>
+          <span data-en>"I love BOMED — truly the best of the best."</span>
+          <span data-al>„E dua BOMED — me të vërtetë më i miri i më të mirëve."</span>
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">Д.Д.</div>
+          <div>
+            <div class="testi-name">Driton D.</div>
+            <div class="testi-loc">📘 Facebook</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">
+          <span data-mk>„Целосно задоволна со двете мешавини — навистина прекрасно искуство. Со нетрпение ја очекувам следната нарачка."</span>
+          <span data-en>"Completely satisfied with both blends — a truly wonderful experience. Looking forward to ordering again soon."</span>
+          <span data-al>„Plotësisht e kënaqur me të dyja përzierjet — një përvojë me të vërtetë e mrekullueshme. Mezi pres të porosis përsëri."</span>
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">С.К.</div>
+          <div>
+            <div class="testi-name">Silvana K.</div>
+            <div class="testi-loc">📘 Facebook</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">
+          <span data-mk>„Целосно задоволни на секој начин. Сме лојални клиенти на BOMED веќе 12 месеци и не би сменеле ништо."</span>
+          <span data-en>"Thoroughly satisfied in every way. We have been loyal BOMED customers for 12 months and would not change a thing."</span>
+          <span data-al>„Plotësisht të kënaqur në çdo mënyrë. Kemi qenë klientë besnikë të BOMED prej 12 muajsh dhe nuk do të ndryshojmë asgjë."</span>
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">Б.З.</div>
+          <div>
+            <div class="testi-name">Biljana Z.</div>
+            <div class="testi-loc">📘 Facebook</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">
+          <span data-mk>„Медот со матичен млеч е едноставно совршен. Со сето срце го препорачувам на секој кој сè уште не го искусил."</span>
+          <span data-en>"The honey with royal jelly is simply perfect. I wholeheartedly recommend it to anyone who has yet to experience it."</span>
+          <span data-al>„Mjalti me gjelenë mbretërore është thjesht i përsosur. E rekomandoj me gjithë zemër për këdo që nuk e ka përjetuar ende."</span>
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">А.З.</div>
+          <div>
+            <div class="testi-name">Anita Z.</div>
+            <div class="testi-loc">📘 Facebook</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">
+          <span data-mk>„Со секојдневна употреба на медните производи на BOMED, телото навистина се трансформира. Пчелите ја вршат работата, а BOMED им оддава почит со најфина грижа."</span>
+          <span data-en>"With daily use of BOMED honey products, the body truly transforms. The bees do the work, and BOMED honours them with the finest care."</span>
+          <span data-al>„Me përdorim të përditshëm të produkteve të mjaltit BOMED, trupi me të vërtetë transformohet. Bletët bëjnë punën, dhe BOMED i nderon ato me kujdesin më të mirë."</span>
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">Ј.К.</div>
+          <div>
+            <div class="testi-name">Jovan K.</div>
+            <div class="testi-loc">📘 Facebook</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">
+          <span data-mk>„Само највисоки пофалби. Вистински волшебници на здравјето и благосостојбата — искрено ви благодарам."</span>
+          <span data-en>"Nothing but the highest praise. True magicians of health and wellbeing — thank you sincerely."</span>
+          <span data-al>„Vetëm lavdërimet më të larta. Magjistarë të vërtetë të shëndetit dhe mirëqenies — ju falënderoj sinqerisht."</span>
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">Е.Ц.</div>
+          <div>
+            <div class="testi-name">Eli C.</div>
+            <div class="testi-loc">📘 Facebook</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact">
+    <div class="hex-bg"></div>
+    <div class="contact-layout">
+
+      <!-- Info column -->
+      <div class="fade-left">
+        <p class="sec-tag"><span data-mk>Контакт</span><span data-en>Contact</span><span data-al>Kontakt</span></p>
+        <h2 class="sec-title" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:16px;">
+          <span data-mk>Поврзете се <span>со нас</span></span>
+          <span data-en>Get in <span>touch</span></span>
+          <span data-al>Na <span>kontaktoni</span></span>
+        </h2>
+        <div class="divider-gold" style="margin:0 0 28px;"></div>
+        <div class="contact-info-col">
+          <p>
+            <span data-mk>Имате прашања за нашите производи? Сакате да нарачате или да се јавите за соработка? Со задоволство ви одговараме.</span>
+            <span data-en>Have questions about our products? Want to order or discuss a partnership? We are happy to respond.</span>
+            <span data-al>Keni pyetje për produktet tona? Dëshironi të porosisni ose të diskutoni një partneritet? Jemi të lumtur t'ju përgjigjemi.</span>
+          </p>
+        </div>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="ci-icon">📍</div>
+            <div class="ci-text">
+              <strong><span data-mk>Адреса</span><span data-en>Address</span><span data-al>Adresa</span></strong>
+              <span><span data-mk>Македонија, Скопје</span><span data-en>Macedonia, Skopje</span><span data-al>Maqedoni, Shkup</span></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📧</div>
+            <div class="ci-text">
+              <strong>Email</strong>
+              <span><a href="mailto:tanjaisovska@t-home.mk" data-copy-label="Email copied!" style="color:var(--text-dim);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'" onclick="copyContact('tanjaisovska@t-home.mk',this)">tanjaisovska@t-home.mk</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📱</div>
+            <div class="ci-text">
+              <strong><span data-mk>Телефон</span><span data-en>Phone</span><span data-al>Telefon</span></strong>
+              <span>
+                <a href="tel:+38971224722" data-copy-label="Number copied!" style="color:var(--text-dim);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'" onclick="copyContact('+38971224722',this)">+389 71 224 722</a>
+                &nbsp;/&nbsp;
+                <a href="tel:+38970224722" data-copy-label="Number copied!" style="color:var(--text-dim);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'" onclick="copyContact('+38970224722',this)">+389 70 224 722</a>
+                &nbsp;/&nbsp;
+                <a href="tel:+38977913310" data-copy-label="Number copied!" style="color:var(--text-dim);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-dim)'" onclick="copyContact('+38977913310',this)">+389 77 913 310</a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-social">
+          <a href="https://www.facebook.com/100063889090450" target="_blank" rel="noopener" class="contact-social-btn fb-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.instagram.com/bomed_pcelarstvo" target="_blank" rel="noopener" class="contact-social-btn ig-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <span>Instagram</span>
+          </a>
+          <a href="viber://chat?number=%2B38977913310" class="contact-social-btn vb-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M11.4 0C5.5.3 1.1 4.8.8 10.7c-.2 3.3.7 6.4 2.7 8.8L2 24l4.6-1.5c2 1.1 4.3 1.7 6.7 1.7C19 24.2 24 19 24 12.6 24 5.6 18.3-.3 11.4 0zm.2 21.5c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1.3 1.1-3.8-.3-.4C.8 15.1.1 12.7.3 10.3.6 5.5 4.5 1.6 9.4 1.3 16.1.9 21.7 6.5 21.7 13c0 4.7-3.8 8.5-8.5 8.5h-.6zm4.6-6.4c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.2-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3.2-.5V11c-.3-.7-.6-1.5-.9-2.1-.1-.2-.3-.3-.5-.2-.2.1-.5.1-.7.1-.5 0-1 .2-1.3.6-.5.5-.7 1.2-.7 1.9 0 1.1.6 2.1 1 2.7 1 1.4 2.3 2.7 3.8 3.6.7.4 1.5.8 2.3 1 .9.2 1.8.2 2.7-.1.6-.2 1.1-.6 1.4-1.1.2-.4.2-.8 0-1.2-.1-.2-.3-.3-.4-.4z"/></svg>
+            <span>Viber</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Decorative right column -->
+      <div class="fade-right contact-deco">
+        <div class="contact-deco-wrap">
+          <svg class="deco-hc" viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="sbglow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%"   stop-color="#D4A843" stop-opacity="0.40"/>
+                <stop offset="38%"  stop-color="#D4A843" stop-opacity="0.14"/>
+                <stop offset="100%" stop-color="#D4A843" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="sbcore" cx="50%" cy="50%" r="50%">
+                <stop offset="0%"   stop-color="#F0C85A" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#D4A843" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <!-- Outer glow -->
+            <ellipse cx="160" cy="180" rx="155" ry="155" fill="url(#sbglow)" class="deco-glow"/>
+            <!-- Core glow -->
+            <circle cx="160" cy="180" r="52" fill="url(#sbcore)" class="deco-glow"/>
+            <!-- Rays (slow rotation) -->
+            <g transform="translate(160,180)" class="deco-sunburst-rays">
+              <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="80s" repeatCount="indefinite" additive="sum"/>
+              <!-- 18 main rays every 20° -->
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(20)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(40)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(60)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(80)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(100)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(120)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(140)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(160)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(180)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(200)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(220)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(240)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(260)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(280)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(300)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(320)"/>
+              <line x1="0" y1="-36" x2="0" y2="-164" stroke="#D4A843" stroke-width="1.8" opacity="0.38" stroke-linecap="round" transform="rotate(340)"/>
+              <!-- 18 secondary rays every 20°, offset by 10° -->
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(10)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(30)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(50)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(70)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(90)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(110)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(130)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(150)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(170)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(190)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(210)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(230)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(250)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(270)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(290)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(310)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(330)"/>
+              <line x1="0" y1="-36" x2="0" y2="-136" stroke="#D4A843" stroke-width="1" opacity="0.17" stroke-linecap="round" transform="rotate(350)"/>
+            </g>
+            <!-- Concentric rings -->
+            <circle cx="160" cy="180" r="52"  fill="none" stroke="rgba(212,168,67,0.28)" stroke-width="1"/>
+            <circle cx="160" cy="180" r="90"  fill="none" stroke="rgba(212,168,67,0.16)" stroke-width="1"/>
+            <circle cx="160" cy="180" r="130" fill="none" stroke="rgba(212,168,67,0.09)" stroke-width="1"/>
+            <circle cx="160" cy="180" r="164" fill="none" stroke="rgba(212,168,67,0.05)" stroke-width="1"/>
+          </svg>
+          <div class="contact-deco-overlay">
+            <span class="contact-deco-bee">🐝</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <img src="brand_assets/BOMED.jpg" alt="BOMED" onerror="this.style.display='none'" />
+          <span>BOMED</span>
+        </div>
+        <p class="footer-tagline">
+          <span data-mk>Природната магија на медот и лековитите пчелни производи — директно од македонските планини до вашиот дом.</span>
+          <span data-en>The natural magic of honey and healing bee products — straight from the Macedonian mountains to your home.</span>
+          <span data-al>Magjia natyrale e mjaltit dhe produkteve shëruese të bletëve — direkt nga malet maqedonase drejt shtëpisë suaj.</span>
+        </p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/100063889090450" target="_blank" rel="noopener" class="fsoc" title="Facebook">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/bomed_pcelarstvo" target="_blank" rel="noopener" class="fsoc" title="Instagram">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="viber://chat?number=%2B38977913310" class="fsoc fsoc-vb" title="Viber">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M11.4 0C5.5.3 1.1 4.8.8 10.7c-.2 3.3.7 6.4 2.7 8.8L2 24l4.6-1.5c2 1.1 4.3 1.7 6.7 1.7C19 24.2 24 19 24 12.6 24 5.6 18.3-.3 11.4 0zm.2 21.5c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1.3 1.1-3.8-.3-.4C.8 15.1.1 12.7.3 10.3.6 5.5 4.5 1.6 9.4 1.3 16.1.9 21.7 6.5 21.7 13c0 4.7-3.8 8.5-8.5 8.5h-.6zm4.6-6.4c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.2-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3.2-.5V11c-.3-.7-.6-1.5-.9-2.1-.1-.2-.3-.3-.5-.2-.2.1-.5.1-.7.1-.5 0-1 .2-1.3.6-.5.5-.7 1.2-.7 1.9 0 1.1.6 2.1 1 2.7 1 1.4 2.3 2.7 3.8 3.6.7.4 1.5.8 2.3 1 .9.2 1.8.2 2.7-.1.6-.2 1.1-.6 1.4-1.1.2-.4.2-.8 0-1.2-.1-.2-.3-.3-.4-.4z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4><span data-mk>Навигација</span><span data-en>Navigation</span><span data-al>Navigimi</span></h4>
+        <ul>
+          <li><a href="#products"><span data-mk>Производи</span><span data-en>Products</span><span data-al>Produkte</span></a></li>
+          <li><a href="#difference"><span data-mk>Нашата разлика</span><span data-en>Our Difference</span><span data-al>Ndryshimi Ynë</span></a></li>
+          <li><a href="#about"><span data-mk>За нас</span><span data-en>About</span><span data-al>Rreth Nesh</span></a></li>
+          <li><a href="#journey"><span data-mk>Патување</span><span data-en>Journey</span><span data-al>Udhëtimi</span></a></li>
+          <li><a href="#team"><span data-mk>Тим</span><span data-en>Team</span><span data-al>Ekipi</span></a></li>
+          <li><a href="#testimonials"><span data-mk>Препораки</span><span data-en>Reviews</span><span data-al>Komente</span></a></li>
+          <li><a href="#contact"><span data-mk>Контакт</span><span data-en>Contact</span><span data-al>Kontakt</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span data-mk>Производи</span><span data-en>Products</span><span data-al>Produkte</span></h4>
+        <ul>
+          <li><a href="#products"><span data-mk>Бестселер Колекција</span><span data-en>Bestseller Collection</span><span data-al>Koleksioni Bestseller</span></a></li>
+          <li><a href="#products"><span data-mk>Мед и Матичен Млеч</span><span data-en>Honey &amp; Royal Jelly</span><span data-al>Mjaltë &amp; Geleja Mbretërore</span></a></li>
+          <li><a href="#products"><span data-mk>Мед со Чуваркука</span><span data-en>Honey with Houseleek</span><span data-al>Mjaltë Premium</span></a></li>
+          <li><a href="#products"><span data-mk>Природни Производи</span><span data-en>Natural Products</span><span data-al>Produkte Natyrale</span></a></li>
+          <li><a href="#products"><span data-mk>Шарен Мед</span><span data-en>Colourful Honey</span><span data-al>Mjaltë me Ngjyra</span></a></li>
+          <li><a href="#products"><span data-mk>Лековита Крема</span><span data-en>Healing Lotion</span><span data-al>Krem Shërues</span></a></li>
+          <li><a href="#products"><span data-mk>Прополис Спреј</span><span data-en>Propolis Spray</span><span data-al>Sprej Propolisi</span></a></li>
+          <li><a href="#products"><span data-mk>Крема за Лице</span><span data-en>Face Cream</span><span data-al>Krem për Fytyrë</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BOMED. <span data-mk>Сите права задржани.</span><span data-en>All rights reserved.</span><span data-al>Të gjitha të drejtat e rezervuara.</span></span>
+      <span><span data-mk>Природата во секоја капка</span><span data-en>Nature in every drop</span><span data-al>Natyra në çdo pikë</span></span>
+    </div>
+  </footer>
+
+  <div id="copy-toast">Copied!</div>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <!-- ═══ STICKY ORDER CTA ═══ -->
+  <div id="sticky-cta">
+    <a href="#contact" class="sticky-cta-btn">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.5 11.5 0 00.57 3.6 1 1 0 01-.25 1.01l-2.2 2.18z"/></svg>
+      <span data-mk>Нарачај</span><span data-en>Order Now</span><span data-al>Porosit</span>
+    </a>
+  </div>
+
+  <script>
+    var _copyTimer;
+    var _copyLabels = {
+      mk: { number: 'Бројот е копиран!', email: 'Е-поштата е копирана!' },
+      en: { number: 'Number copied!',    email: 'Email copied!' },
+      al: { number: 'Numri u kopjua!',   email: 'Email-i u kopjua!' }
+    };
+    function copyContact(value, el) {
+      var toast = document.getElementById('copy-toast');
+      var lang  = document.body.classList.contains('lang-en') ? 'en' :
+                  document.body.classList.contains('lang-al') ? 'al' : 'mk';
+      var type  = (el.getAttribute('data-copy-label') || '').toLowerCase().includes('email') ? 'email' : 'number';
+      toast.textContent = _copyLabels[lang][type];
+      function show() {
+        toast.classList.add('show');
+        clearTimeout(_copyTimer);
+        _copyTimer = setTimeout(function() { toast.classList.remove('show'); }, 2000);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).then(show).catch(show);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = value; ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch(e) {}
+        document.body.removeChild(ta);
+        show();
+      }
+    }
+
+    function setLang(lang) {
+      document.body.classList.remove('lang-mk', 'lang-en', 'lang-al');
+      document.body.classList.add('lang-' + lang);
+      var langCodes = { mk: 'mk', en: 'en', al: 'sq' };
+      document.documentElement.lang = langCodes[lang] || lang;
+      ['MK','EN','AL'].forEach(l => {
+        const b1 = document.getElementById('btn' + l);
+        const b2 = document.getElementById('btn' + l + 'm');
+        if (b1) b1.classList.toggle('active', lang === l.toLowerCase());
+        if (b2) b2.classList.toggle('active', lang === l.toLowerCase());
+      });
+      document.querySelectorAll('.dph').forEach(el => {
+        const ph = el.getAttribute('placeholder-' + lang);
+        if (ph) el.placeholder = ph;
+      });
+      document.querySelectorAll('.dsel option').forEach(opt => {
+        const txt = opt.getAttribute('data-' + lang);
+        if (txt) opt.text = txt;
+      });
+      localStorage.setItem('bomed-lang', lang);
+    }
+    const savedLang = localStorage.getItem('bomed-lang') || 'mk';
+    setLang(savedLang);
+
+    function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); }
+    function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); }
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const delay = parseInt(entry.target.dataset.delay || 0);
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach((el, i) => {
+      el.dataset.delay = (i % 5) * 80;
+      observer.observe(el);
+    });
+
+    // Replace YOUR_FORM_ID with the ID from https://formspree.io (free account, use tanjaisovska@t-home.mk)
+    var FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      var form = e.target;
+      var btn  = document.getElementById('form-btn');
+      var successEl = document.getElementById('form-success');
+      var errorEl   = document.getElementById('form-error');
+
+      // sync reply-to with the email field so replies go to the sender
+      document.getElementById('form-replyto').value =
+        document.getElementById('form-email').value;
+
+      successEl.style.display = 'none';
+      errorEl.style.display   = 'none';
+      btn.disabled = true;
+
+      fetch(FORMSPREE_ENDPOINT, {
+        method:  'POST',
+        headers: { 'Accept': 'application/json' },
+        body:    new FormData(form)
+      })
+      .then(function(res) {
+        btn.disabled = false;
+        if (res.ok) {
+          successEl.style.display = 'block';
+          form.reset();
+          setTimeout(function() { successEl.style.display = 'none'; }, 6000);
+        } else {
+          errorEl.style.display = 'block';
+        }
+      })
+      .catch(function() {
+        btn.disabled = false;
+        errorEl.style.display = 'block';
+      });
+    }
+
+    // ═══ COUNT-UP ANIMATION ═══
+    (function() {
+      var statsEl = document.querySelector('.legacy-stats');
+      if (!statsEl) return;
+      var triggered = false;
+      new IntersectionObserver(function(entries) {
+        if (!entries[0].isIntersecting || triggered) return;
+        triggered = true;
+        setTimeout(function() {
+          statsEl.querySelectorAll('.ls-num[data-count]').forEach(function(el) {
+            var target   = parseInt(el.getAttribute('data-count'));
+            var prefix   = el.getAttribute('data-prefix') || '';
+            var suffix   = el.getAttribute('data-suffix') || '';
+            var duration = 1800;
+            var t0       = null;
+            function step(ts) {
+              if (!t0) t0 = ts;
+              var p = Math.min((ts - t0) / duration, 1);
+              var eased = 1 - Math.pow(1 - p, 3);
+              el.textContent = prefix + Math.floor(eased * target) + suffix;
+              if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+          });
+        }, 300);
+      }, { threshold: 0.4 }).observe(statsEl);
+    })();
+
+    // ═══ HONEY GLOW BACKGROUND ═══
+    (function () {
+      var canvas = document.getElementById('honey-glow-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+
+      var COLORS = [
+        [200, 134,  10],  // #C8860A honey
+        [232, 160,  32],  // #E8A020 amber
+        [212, 168,  67],  // #D4A843 gold
+        [240, 200,  90],  // #F0C85A gold-light
+        [255, 184,   0],  // bright honey
+        [224, 112,  16],  // dark amber
+        [255, 216,  80],  // warm gold
+      ];
+
+      var W = 1, H = 1;
+
+      var orbs = COLORS.map(function (rgb, i) {
+        var xFrac = 0.06 + (i / (COLORS.length - 1)) * 0.88;
+        var yFrac = 0.15 + Math.random() * 0.70;
+        return {
+          rgb:       rgb,
+          xFrac:     xFrac,
+          yFrac:     yFrac,
+          baseX:     0,
+          baseY:     0,
+          r:         110 + Math.random() * 150,
+          phase:     (i / COLORS.length) * Math.PI * 2 + Math.random() * 1.5,
+          speedX:    0.10 + Math.random() * 0.18,
+          speedY:    0.07 + Math.random() * 0.13,
+          ampX:      55  + Math.random() * 95,
+          ampY:      28  + Math.random() * 55,
+          alpha:     0.20 + Math.random() * 0.14,
+          pulseSpd:  0.28 + Math.random() * 0.55,
+          pulseOff:  Math.random() * Math.PI * 2,
+        };
+      });
+
+      function resize() {
+        var rect = canvas.parentElement.getBoundingClientRect();
+        W = canvas.width  = Math.round(rect.width  || 800);
+        H = canvas.height = Math.round(rect.height || 300);
+        orbs.forEach(function (o) {
+          o.baseX = o.xFrac * W;
+          o.baseY = o.yFrac * H;
+        });
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+
+      var active = false;
+      var obs = new IntersectionObserver(function (entries) {
+        active = entries[0].isIntersecting;
+      }, { threshold: 0 });
+      obs.observe(canvas.parentElement);
+
+      var t = 0;
+
+      function draw() {
+        requestAnimationFrame(draw);
+        if (!active) return;
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+
+        orbs.forEach(function (o) {
+          var px = o.baseX + Math.sin(t * o.speedX + o.phase) * o.ampX;
+          var py = o.baseY + Math.cos(t * o.speedY + o.phase * 0.73) * o.ampY;
+          var pulse  = 0.55 + 0.45 * Math.sin(t * o.pulseSpd + o.pulseOff);
+          var alpha  = o.alpha * pulse;
+          var radius = o.r * (0.82 + 0.18 * pulse);
+          var R = o.rgb[0], G = o.rgb[1], B = o.rgb[2];
+
+          var grad = ctx.createRadialGradient(px, py, 0, px, py, radius);
+          grad.addColorStop(0,    'rgba('+R+','+G+','+B+','+alpha.toFixed(3)+')');
+          grad.addColorStop(0.30, 'rgba('+R+','+G+','+B+','+(alpha*0.65).toFixed(3)+')');
+          grad.addColorStop(0.65, 'rgba('+R+','+G+','+B+','+(alpha*0.18).toFixed(3)+')');
+          grad.addColorStop(1,    'rgba('+R+','+G+','+B+',0)');
+
+          ctx.beginPath();
+          ctx.arc(px, py, radius, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+        });
+
+        ctx.restore();
+        t += 0.008;
+      }
+
+      draw();
+    })();
+
+    // ═══ HONEY DRIPS ═══
+    (function () {
+      const scene = document.getElementById('honeyDripsScene');
+      if (!scene) return;
+
+      // [left%, width px]
+      const dripDefs = [
+        [2,4],[7,6],[13,4],[19,7],[26,5],[33,8],
+        [40,4],[47,6],[54,5],[61,7],[68,4],[75,6],
+        [82,5],[88,7],[94,4]
+      ];
+
+      dripDefs.forEach(([xPct, w], i) => {
+        spawnDrip(xPct, w, i * 480 + Math.random() * 350);
+      });
+
+      function spawnDrip(xPct, w, delay) {
+        const blobW = Math.max(w * 2.7, 13);
+        const blobH = blobW * 1.35;
+
+        const stalk = document.createElement('div');
+        stalk.className = 'h-drip-stalk';
+        stalk.style.cssText = 'left:' + xPct + '%;width:' + w + 'px;height:0;margin-left:' + (-w / 2) + 'px;';
+
+        const blob = document.createElement('div');
+        blob.className = 'h-drip-blob';
+        blob.style.cssText = 'left:' + xPct + '%;width:' + blobW + 'px;height:' + blobH + 'px;margin-left:' + (-blobW / 2) + 'px;top:0;opacity:0;transform:scale(0);transform-origin:top center;';
+
+        scene.appendChild(stalk);
+        scene.appendChild(blob);
+
+        setTimeout(cycle, delay);
+
+        function cycle() {
+          const maxH = 55 + Math.random() * 160;
+          const growMs = 2000 + Math.random() * 3000;
+          const holdMs = 250 + Math.random() * 350;
+
+          stalk.style.transition = 'height ' + growMs + 'ms cubic-bezier(0.2,0,0.85,1)';
+          stalk.style.height = maxH + 'px';
+
+          setTimeout(function () {
+            blob.style.transition = 'top ' + (growMs * 0.72) + 'ms cubic-bezier(0.2,0,0.85,1), opacity 350ms, transform 450ms cubic-bezier(0.34,1.56,0.64,1)';
+            blob.style.top = (maxH - blobH * 0.38) + 'px';
+            blob.style.opacity = '1';
+            blob.style.transform = 'scale(1)';
+          }, growMs * 0.28);
+
+          setTimeout(function () {
+            blob.style.transition = 'transform 180ms ease-in';
+            blob.style.transform = 'scale(1.1) scaleY(0.92)';
+
+            setTimeout(function () {
+              var dropDist = 75 + Math.random() * 55;
+              blob.style.transition = 'top 650ms cubic-bezier(0.4,0,1,1), opacity 480ms 80ms, transform 280ms';
+              blob.style.top = (maxH - blobH * 0.38 + dropDist) + 'px';
+              blob.style.opacity = '0';
+              blob.style.transform = 'scale(0.45) scaleY(1.5)';
+
+              stalk.style.transition = 'height 480ms cubic-bezier(0.4,0,0.6,1)';
+              stalk.style.height = '0';
+
+              setTimeout(function () {
+                stalk.style.transition = 'none';
+                blob.style.transition = 'none';
+                blob.style.top = '0';
+                blob.style.opacity = '0';
+                blob.style.transform = 'scale(0)';
+                stalk.style.height = '0';
+                setTimeout(cycle, 1100 + Math.random() * 2800);
+              }, 850);
+            }, 180);
+          }, growMs + holdMs);
+        }
+      }
+    })();
+
+    // ═══ STICKY CTA ═══
+    (function () {
+      const cta  = document.getElementById('sticky-cta');
+      const hero = document.getElementById('hero');
+      if (!cta || !hero) return;
+      function update() {
+        cta.classList.toggle('visible', hero.getBoundingClientRect().bottom < 0);
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+  </script>
+</body>
+</html>
