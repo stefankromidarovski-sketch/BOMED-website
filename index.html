@@ -161,7 +161,9 @@
     .hero-eyebrow::before, .hero-eyebrow::after { content: '✦'; font-size: 0.5rem; }
     .hero-title { font-size: clamp(3.4rem, 8vw, 7rem); line-height: 1.0; margin-bottom: 30px; color: var(--text); letter-spacing: -0.01em; }
     .hero-title em { font-style: italic; color: var(--gold); display: block; }
-    .hero-sub { font-size: 1.05rem; font-weight: 300; line-height: 1.85; color: var(--text-dim); max-width: 520px; margin: 0 auto 48px; }
+    .hero-sub { max-width: 520px; margin: 0 auto 40px; }
+    .hero-sub-lead { display: block; font-size: 1.1rem; font-weight: 400; line-height: 1.6; color: var(--text); margin-bottom: 14px; }
+    .hero-sub-detail { display: block; font-size: 0.88rem; font-weight: 300; line-height: 1.65; color: var(--text-dim); opacity: 0.8; }
     .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
     .btn-primary {
       display: inline-block; padding: 17px 46px;
@@ -274,6 +276,45 @@
     .notice-desc { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: var(--text-dim); max-width: 620px; margin: 0 auto 18px; position: relative; z-index: 1; }
     .notice-price { font-size: 0.88rem; font-weight: 400; line-height: 1.85; color: var(--text-dim); max-width: 560px; margin: 0 auto 36px; padding: 16px 22px; background: rgba(212,168,67,0.06); border-radius: 2px; border: 1px solid rgba(212,168,67,0.18); position: relative; z-index: 1; }
     .notice-price strong { color: var(--gold); font-weight: 600; }
+
+    /* ═══════════════ RANGE ═══════════════ */
+    .range-block { text-align: center; margin: 64px 0; position: relative; z-index: 1; }
+    .range-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 600; color: var(--text); line-height: 1.2; margin: 8px 0 18px; }
+    .range-title span { color: var(--gold); font-style: italic; }
+    .range-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 32px; }
+    .range-pill { display: inline-flex; align-items: center; padding: 12px 22px; background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.25); border-radius: 999px; font-size: 0.85rem; font-weight: 500; color: var(--text); letter-spacing: 0.02em; }
+
+    /* ═══════════════ PRODUCTS OVERLAY ═══════════════ */
+    .products-view-btn-wrap { display: flex; justify-content: center; margin-top: 8px; position: relative; z-index: 1; }
+    .products-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: var(--bg);
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .products-overlay.open { transform: translateX(0); }
+    .products-overlay-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 6vw 6rem; position: relative; }
+    .products-close {
+      position: fixed; top: 1.5rem; right: 1.75rem;
+      background: var(--gold); border: none; color: #0F0E0C;
+      width: 44px; height: 44px; border-radius: 50%; font-size: 1.1rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 16px rgba(212,168,67,0.5);
+      z-index: 2001;
+    }
+    .products-close:hover { background: var(--gold-light); box-shadow: 0 0 28px rgba(212,168,67,0.8); }
+    .products-overlay-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 600; color: var(--text);
+      margin-bottom: 2.5rem; padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(212,168,67,0.15);
+    }
+    @media (max-width: 860px) {
+      .products-overlay-inner { padding: 4.5rem 5vw 5rem; }
+    }
 
     /* ═══════════════ DIFFERENCE ═══════════════ */
     #difference { background: var(--bg4); border-top: 1px solid rgba(212,168,67,0.1); border-bottom: 1px solid rgba(212,168,67,0.1); padding: 90px 6vw; position: relative; overflow: hidden; }
@@ -591,9 +632,9 @@
     <div class="honey-drips-scene" id="honeyDripsScene"></div>
     <div class="hero-content">
       <div class="hero-eyebrow fade-up">
-        <span data-mk>Чист мед · Природно лекување · Македонија</span>
-        <span data-en>Pure Honey · Natural Healing · Macedonia</span>
-        <span data-al>Mjaltë i Pastër · Shërim Natyral · Maqedoni</span>
+        <span data-mk>Пчелни производи · Природна поддршка на здравјето · Македонија</span>
+        <span data-en>Bee Products · Natural Health Support · Macedonia</span>
+        <span data-al>Produkte Bletësh · Mbështetje Natyrore për Shëndetin · Maqedoni</span>
       </div>
       <h1 class="hero-title fade-up">
         <span data-mk>Природата во<br /><em>секоја капка</em></span>
@@ -601,9 +642,9 @@
         <span data-al>Natyra në<br /><em>çdo pikë</em></span>
       </h1>
       <p class="hero-sub fade-up">
-        <span data-mk>Со децении искуство во пчеларство и природни лекови, BOMED ви нуди чисти пчелни производи со исклучителни лековити својства.</span>
-        <span data-en>With decades of beekeeping experience and natural healing expertise, BOMED brings you pure, extraordinary honey products with remarkable healing properties.</span>
-        <span data-al>Me dekada përvojë bletarie dhe ekspertizë shëruese natyrore, BOMED ju sjell produkte të pastra mjalti me veti të jashtëzakonshme shëruese.</span>
+        <span data-mk><span class="hero-sub-lead">Во секоја тегла БОМЕД има многу повеќе од мед.</span><span class="hero-sub-detail">Има посветеност, семејна традиција, љубов кон пчелите и почит кон природата.<br /><br />Нашите производи се создаваат внимателно, од квалитетни природни состојки, за да Ви понудат вкус и квалитет на кои можете да им верувате.<br /><br />Добредојдовте во светот на БОМЕД.</span></span>
+        <span data-en><span class="hero-sub-lead">In every jar, BOMED holds much more than honey.</span><span class="hero-sub-detail">It holds dedication, family tradition, love for the bees, and respect for nature.<br /><br />Our products are made with care, from quality natural ingredients, to offer you a taste and quality you can trust.<br /><br />Welcome to the world of BOMED.</span></span>
+        <span data-al><span class="hero-sub-lead">Në çdo kavanoz, BOMED ka shumë më tepër se mjaltë.</span><span class="hero-sub-detail">Ka përkushtim, traditë familjare, dashuri për bletët dhe respekt për natyrën.<br /><br />Produktet tona krijohen me kujdes, nga përbërës natyralë cilësorë, për t'ju ofruar shije dhe cilësi që mund t'i besoni.<br /><br />Mirë se vini në botën e BOMED.</span></span>
       </p>
       <div class="hero-ctas fade-up">
         <a href="#products" class="btn-primary">
@@ -645,20 +686,24 @@
       </p>
       <div class="legacy-stats fade-up">
         <div class="ls-item">
-          <div class="ls-num" data-count="25" data-suffix="+">25+</div>
-          <div class="ls-label"><span data-mk>Години искуство</span><span data-en>Years Experience</span><span data-al>Vite Përvojë</span></div>
+          <div class="ls-num" data-count="57" data-suffix="+">57+</div>
+          <div class="ls-label"><span data-mk>Год. искуство</span><span data-en>Years Experience</span><span data-al>Vite Përvojë</span></div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num"><span data-mk>Голем број</span><span data-en>Wide Range of</span><span data-al>Gamë e Gjerë</span></div>
+          <div class="ls-label"><span data-mk>Производи во различни количини и концентрации</span><span data-en>Products in Different Sizes &amp; Concentrations</span><span data-al>Produkte në Madhësi &amp; Përqendrime të Ndryshme</span></div>
         </div>
         <div class="ls-item">
           <div class="ls-num" data-count="100" data-suffix="%">100%</div>
           <div class="ls-label"><span data-mk>Природни состојки</span><span data-en>Natural Ingredients</span><span data-al>Përbërës Natyralë</span></div>
         </div>
         <div class="ls-item">
-          <div class="ls-num" data-count="30" data-suffix="+">30+</div>
-          <div class="ls-label"><span data-mk>Видови производи</span><span data-en>Product Varieties</span><span data-al>Varietete Produktesh</span></div>
+          <div class="ls-num"><span data-mk>Безброј</span><span data-en>Countless</span><span data-al>Të Panumërt</span></div>
+          <div class="ls-label"><span data-mk>Задоволни клиенти</span><span data-en>Happy Customers</span><span data-al>Klientë të Lumtur</span></div>
         </div>
         <div class="ls-item">
-          <div class="ls-num" data-count="1000" data-suffix="+">1000+</div>
-          <div class="ls-label"><span data-mk>Задоволни клиенти</span><span data-en>Happy Customers</span><span data-al>Klientë të Lumtur</span></div>
+          <div class="ls-num"><span data-mk>Скоро 10.000</span><span data-en>Almost 10,000</span><span data-al>Pothuajse 10.000</span></div>
+          <div class="ls-label"><span data-mk>луѓе кои не следат на социјалните мрежи</span><span data-en>people who follow us on social media</span><span data-al>persona që na ndjekin në rrjetet sociale</span></div>
         </div>
       </div>
     </div>
@@ -668,226 +713,19 @@
   <section id="products">
     <div class="hex-bg"></div>
     <div class="sec-header fade-up">
-      <p class="sec-tag"><span data-mk>Најпродавани</span><span data-en>Best Sellers</span><span data-al>Më të Shitura</span></p>
-      <h2 class="sec-title">
-        <span data-mk>Дарови на <span>природата</span></span>
-        <span data-en>Gifts of <span>nature</span></span>
-        <span data-al>Dhuratat e <span>natyrës</span></span>
-      </h2>
-      <div class="divider-gold"></div>
-      <p class="sec-sub">
-        <span data-mk>Секој наш производ е резултат на внимателно пчеларство и природна преработка.</span>
-        <span data-en>Each product is the result of careful beekeeping and natural processing.</span>
-        <span data-al>Çdo produkt ynë është rezultat i bletarisë së kujdesshme dhe përpunimit natyror.</span>
+      <p class="sec-sub" style="max-width:640px;">
+        <span data-mk>Во БОМЕД веруваме дека најдобрите производи ги создава природата. Ние само внимателно ги подготвуваме за да стигнат до Вашиот дом. Започнете со нашите најпродавани производи.<br /><br />Богата комбинација од мед и млеч – создадена да го поддржи твоето тело секој ден. Енергија наутро, сила во текот на денот, природна грижа за имунитетот.</span>
+        <span data-en>At BOMED, we believe nature creates the best products. We simply prepare them with care so they can reach your home. Start with our best-selling products.<br /><br />A rich blend of honey and royal jelly – created to support your body every day. Energy in the morning, strength throughout the day, natural care for your immunity.</span>
+        <span data-al>Në BOMED, besojmë se natyra i krijon produktet më të mira. Ne thjesht i përgatisim ato me kujdes që të arrijnë në shtëpinë tuaj. Filloni me produktet tona më të shitura.<br /><br />Një kombinim i pasur mjaltë dhe qumësht nëne – krijuar për të mbështetur trupin tënd çdo ditë. Energji në mëngjes, forcë gjatë ditës, kujdes natyror për imunitetin.</span>
       </p>
+      <div class="divider-gold" style="margin-top:24px;"></div>
     </div>
-    <div class="products-grid">
-
-      <!-- Best Seller -->
-      <div class="product-card fade-up">
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <img src="queen.jpg" alt="BOMED Bestseller Collection" class="product-photo" />
-          <span class="product-badge"><span data-mk>Бестселер</span><span data-en>Best Seller</span><span data-al>Bestseller</span></span>
-        </div>
-        <div class="product-body">
-          <div class="product-name"><span data-mk>Бестселер Колекција</span><span data-en>Bestseller Collection</span><span data-al>Koleksioni Bestseller</span></div>
-          <p class="product-desc">
-            <span data-mk>Мајсторска мешавина од чист мед, лимон, цимет и ѓумбир — најмоќните состојки на природата, обединети во еден тегла.</span>
-            <span data-en>A masterful blend of pure honey, lemon, cinnamon and ginger — nature's most potent ingredients, unified in a single jar.</span>
-            <span data-al>Një përzierje e shkëlqyer e mjaltit të pastër, limonit, kanellës dhe xhenxhefilit — përbërësit më të fuqishëm të natyrës, të unifikuar në një kavanoz.</span>
-          </p>
-          <div class="product-footer" style="padding-top:0;border-top:none;">
-            <span class="product-tag"><span data-mk>→ Највеќе нарачувани</span><span data-en>→ Most Ordered</span><span data-al>→ Më Të Porositura</span></span>
-            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Immunity -->
-      <div class="product-card fade-up">
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <img src="immm.jpg" alt="BOMED Immunity — Мед и Млеч" class="product-photo" style="object-position: center 70%;" />
-          <span class="product-badge"><span data-mk>Имунитет</span><span data-en>Immunity</span><span data-al>Imunitet</span></span>
-        </div>
-        <div class="product-body">
-          <div class="product-name"><span data-mk>Мед и Матичен Млеч</span><span data-en>Honey &amp; Royal Jelly</span><span data-al>Mjaltë &amp; Geleja Mbretërore</span></div>
-          <p class="product-desc">
-            <span data-mk>Формулиран за одржување на вашата енергија во текот на целиот ден, додека моќно го зајакнува имунолошкиот систем со најфин матичен млеч.</span>
-            <span data-en>Formulated to sustain your energy throughout the entire day while powerfully reinforcing your immune system with the finest royal jelly.</span>
-            <span data-al>Formuluar për të mbajtur energjinë tuaj gjatë gjithë ditës, ndërsa forcon fuqishëm sistemin tuaj imunitar me gjelenë mbretërore më të mirë.</span>
-          </p>
-          <div class="product-footer" style="padding-top:0;border-top:none;">
-            <span class="product-tag"><span data-mk>→ Природна заштита</span><span data-en>→ Natural Protection</span><span data-al>→ Mbrojtje Natyrale</span></span>
-            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Premium -->
-      <div class="product-card fade-up">
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <img src="immunity.jpg" alt="BOMED Premium — Мед со Чуваркука" class="product-photo" />
-          <span class="product-badge"><span data-mk>Премиум</span><span data-en>Premium</span><span data-al>Premium</span></span>
-        </div>
-        <div class="product-body">
-          <div class="product-name"><span data-mk>Мед со Чуваркука</span><span data-en>Honey with Houseleek</span><span data-al>Mjaltë Premium</span></div>
-          <p class="product-desc">
-            <span data-mk>Традиционален природен лек кој го поддржува уринарниот систем и промовира здраво варење преку чистата синергија на чуваркуката и медот.</span>
-            <span data-en>A time-honoured natural remedy that supports urinary tract health and promotes healthy digestion through the pure synergy of houseleek and honey.</span>
-            <span data-al>Një ilaç natyror i sprovuar që mbështet shëndetin e traktit urinar dhe promovon tretje të shëndetshme nëpërmjet sinergisë së pastër të bimës dhe mjaltit.</span>
-          </p>
-          <div class="product-footer" style="padding-top:0;border-top:none;">
-            <span class="product-tag"><span data-mk>→ Ексклузивно</span><span data-en>→ Exclusive</span><span data-al>→ Ekskluzive</span></span>
-            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Regular / Full Range -->
-      <div class="product-card fade-up">
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <img src="nattttu.jpg" alt="BOMED Full Product Range" class="product-photo" />
-          <span class="product-badge"><span data-mk>Природно</span><span data-en>Natural</span><span data-al>Natyral</span></span>
-        </div>
-        <div class="product-body">
-          <div class="product-name"><span data-mk>Природни Производи</span><span data-en>Natural Products</span><span data-al>Produkte Natyrale</span></div>
-          <p class="product-desc">
-            <span data-mk>Внимателно селектиран избор на нашите најфини природни производи — чисти, непреработени и директно од нетакнатите македонски планини.</span>
-            <span data-en>A carefully curated selection of our finest natural offerings — pure, unprocessed and sourced directly from the pristine Macedonian highlands.</span>
-            <span data-al>Një përzgjedhje e kujdesshme e ofertave tona natyrore më të mira — të pastra, të papërpunuara dhe të siguruara drejtpërdrejt nga malet e paprekura maqedonase.</span>
-          </p>
-          <div class="product-footer" style="padding-top:0;border-top:none;">
-            <span class="product-tag"><span data-mk>→ Широк избор</span><span data-en>→ Wide Selection</span><span data-al>→ Zgjedhje e Gjerë</span></span>
-            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Colourful Honey -->
-      <div class="product-card fade-up">
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <img src="colorful.jpg" alt="BOMED Colourful Honey" class="product-photo" />
-          <span class="product-badge"><span data-mk>Шарен мед</span><span data-en>Colourful Honey</span><span data-al>Mjaltë me Ngjyra</span></span>
-        </div>
-        <div class="product-body">
-          <div class="product-name"><span data-mk>Шарен Мед</span><span data-en>Colourful Honey</span><span data-al>Mjaltë me Ngjyra</span></div>
-          <p class="product-desc">
-            <span data-mk>Живописен асортиман на ароматични сорти мед, секоја со свој уникатен карактер — позната по природното олеснување при мигренозни напади.</span>
-            <span data-en>A vibrant assortment of flavourful honey varieties, each with its own unique character — and known for providing natural relief from migraine attacks.</span>
-            <span data-al>Një asortiment i gjallë i varieteteve të mjaltit aromatik, secila me karakterin e saj unik — e njohur për lehtësimin natyror nga sulmet migrenoze.</span>
-          </p>
-          <div class="product-footer" style="padding-top:0;border-top:none;">
-            <span class="product-tag"><span data-mk>→ Разновидни сорти</span><span data-en>→ Variety of Sorts</span><span data-al>→ Varietete të Ndryshme</span></span>
-            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Healing Lotion -->
-      <div class="product-card fade-up">
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <img src="healinglotion.jpg" alt="BOMED Healing Lotion" class="product-photo" />
-          <span class="product-badge"><span data-mk>Лековита крема</span><span data-en>Healing Lotion</span><span data-al>Krem Shërues</span></span>
-        </div>
-        <div class="product-body">
-          <div class="product-name"><span data-mk>Лековита Крема</span><span data-en>Healing Lotion</span><span data-al>Krem Shërues</span></div>
-          <p class="product-desc">
-            <span data-mk>Хранлива природна крема создадена да ја ревитализира и омекне кожата, додека нуди смирувачко олеснување при болки во зглобовите и грбот.</span>
-            <span data-en>A nourishing natural lotion crafted to revitalise and soften the skin while delivering soothing relief for joint discomfort and back pain.</span>
-            <span data-al>Një locion natyror ushqyes i krijuar për të ringjallur dhe zbutur lëkurën, ndërsa ofron lehtësim qetësues për shqetësimet e kyçeve dhe dhimbjet e shpinës.</span>
-          </p>
-          <div class="product-footer" style="padding-top:0;border-top:none;">
-            <span class="product-tag"><span data-mk>→ Природна нега</span><span data-en>→ Natural Care</span><span data-al>→ Kujdes Natyror</span></span>
-            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Propolis Spray -->
-      <div class="product-card fade-up">
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <img src="spray.jpg" alt="BOMED Propolis Spray" class="product-photo" />
-          <span class="product-badge"><span data-mk>Прополис спреј</span><span data-en>Propolis Spray</span><span data-al>Sprej Propolis</span></span>
-        </div>
-        <div class="product-body">
-          <div class="product-name"><span data-mk>Прополис Спреј</span><span data-en>Propolis Spray</span><span data-al>Sprej Propolisi</span></div>
-          <p class="product-desc">
-            <span data-mk>Потентен спреј на база на прополис кој го зајакнува имунолошкиот систем и ги смирува иритациите и воспаленијата во пределот на лицето и грлото.</span>
-            <span data-en>A potent propolis-based oral spray that strengthens the immune system and soothes irritation and inflammation around the face and throat.</span>
-            <span data-al>Një sprej oral i fuqishëm me bazë propolisi që forcon sistemin imunitar dhe qetëson irritimin dhe inflamacionin rreth fytyrës dhe fytit.</span>
-          </p>
-          <div class="product-footer" style="padding-top:0;border-top:none;">
-            <span class="product-tag"><span data-mk>→ Нос и грло</span><span data-en>→ Nose &amp; Throat</span><span data-al>→ Hundë &amp; Fyt</span></span>
-            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Face Cream -->
-      <div class="product-card fade-up">
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <img src="face.jpg" alt="BOMED Face Cream" class="product-photo" />
-          <span class="product-badge"><span data-mk>Крема за лице</span><span data-en>Face Cream</span><span data-al>Krem për Fytyrë</span></span>
-        </div>
-        <div class="product-body">
-          <div class="product-name"><span data-mk>Крема за Лице</span><span data-en>Face Cream</span><span data-al>Krem për Fytyrë</span></div>
-          <p class="product-desc">
-            <span data-mk>Луксузна крема за лице збогатена со мед која длабоко хидрира, активно спречува акни и остава тенот видливо помазен и посјаен.</span>
-            <span data-en>A luxurious honey-infused face cream that deeply hydrates the skin, actively prevents breakouts and leaves your complexion visibly smoother and more radiant.</span>
-            <span data-al>Një krem luksoz për fytyrë i pasuruar me mjaltë që hidraton thellë lëkurën, parandalon aktivisht puçrrat dhe lë tiparet tuaja dukshëm më të lëmuara dhe të ndritshme.</span>
-          </p>
-          <div class="product-footer" style="padding-top:0;border-top:none;">
-            <span class="product-tag"><span data-mk>→ Природна козметика</span><span data-en>→ Natural Cosmetics</span><span data-al>→ Kozmetikë Natyrale</span></span>
-            <button class="btn-shop" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- More Products Notice -->
-    <div class="products-notice fade-up">
-      <div class="products-notice-inner">
-        <div class="notice-divider"></div>
-        <h3 class="notice-title">
-          <span data-mk>Имаме многу повеќе производи</span>
-          <span data-en>We Have Many More Products</span>
-          <span data-al>Kemi Shumë Më Tepër Produkte</span>
-        </h3>
-        <p class="notice-desc">
-          <span data-mk>На оваа страница прикажуваме само дел од нашиот богат асортиман. Имаме многу повеќе производи кои не се прикажани овде — различни видови мед, специјални мешавини, сезонски производи и уште многу повеќе. Доколку сакате да дознаете повеќе или да направите нарачка, слободно контактирајте не.</span>
-          <span data-en>On this page we showcase only a selection of our rich product range. We have many more products not listed here — different honey varieties, special blends, seasonal offerings and much more. If you would like to find out more or place an order, please do not hesitate to contact us.</span>
-          <span data-al>Në këtë faqe shfaqim vetëm një pjesë të gamës sonë të pasur të produkteve. Kemi shumë produkte të tjera që nuk tregohen këtu — lloje të ndryshme mjalti, përzierje speciale, oferta sezonale dhe shumë më tepër. Nëse dëshironi të mësoni më shumë ose të bëni një porosi, mos ngurroni të na kontaktoni.</span>
-        </p>
-        <p class="notice-price">
-          <span data-mk>Цените ги договараме директно — контактирајте не и ќе ви помогнеме да изберете најдобро за вас.</span>
-          <span data-en>Pricing is discussed directly — reach out and we will help you find the best option for your needs.</span>
-          <span data-al>Çmimet i diskutojmë drejtpërdrejt — na kontaktoni dhe do t'ju ndihmojmë të zgjidhni më të mirën për ju.</span>
-        </p>
-        <div style="margin-bottom:28px;padding:18px 24px;background:rgba(212,168,67,0.06);border:1px solid rgba(212,168,67,0.25);border-radius:3px;position:relative;z-index:1;">
-          <p style="font-size:0.85rem;line-height:1.85;color:var(--text-dim);margin:0;">
-            <strong style="color:var(--gold);display:block;margin-bottom:6px;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;">
-              <span data-mk>💬 Како да нарачате</span><span data-en>💬 How to Order</span><span data-al>💬 Si të Porosisni</span>
-            </strong>
-            <span data-mk>Спремни сте да нарачате или сакате да дознаете повеќе? Контактирајте не — одговараме брзо. Најдете не на <strong style="color:var(--gold);">Facebook</strong>, <strong style="color:var(--gold);">Instagram</strong>, по <strong style="color:var(--gold);">е-пошта</strong> или на <strong style="color:var(--gold);">телефон</strong>.</span>
-            <span data-en>Ready to order or want to know more? Just reach out — we reply fast. Find us on <strong style="color:var(--gold);">Facebook</strong>, <strong style="color:var(--gold);">Instagram</strong>, by <strong style="color:var(--gold);">email</strong> or <strong style="color:var(--gold);">phone</strong>.</span>
-            <span data-al>Gati për të porositur ose dëshironi të dini më shumë? Na kontaktoni — përgjigjemi shpejt. Na gjeni në <strong style="color:var(--gold);">Facebook</strong>, <strong style="color:var(--gold);">Instagram</strong>, me <strong style="color:var(--gold);">email</strong> ose <strong style="color:var(--gold);">telefon</strong>.</span>
-          </p>
-        </div>
-        <a href="#contact" class="btn-primary" style="display:inline-block;">
-          <span data-mk>Контактирајте не</span>
-          <span data-en>Contact Us</span>
-          <span data-al>Na Kontaktoni</span>
-        </a>
-      </div>
+    <div class="products-view-btn-wrap">
+      <button class="btn-primary" onclick="openProducts()">
+        <span data-mk>Погледнете ги сите производи</span>
+        <span data-en>View All Products</span>
+        <span data-al>Shikoni të Gjitha Produktet</span>
+      </button>
     </div>
 
   </section>
@@ -896,13 +734,18 @@
   <section id="difference">
     <div class="hex-bg"></div>
     <div class="sec-header fade-up">
-      <p class="sec-tag"><span data-mk>Зошто BOMED</span><span data-en>The BOMED Difference</span><span data-al>Ndryshimi Ynë</span></p>
+      <p class="sec-tag"><span data-mk>Зошто BOMED</span><span data-en>Why BOMED</span><span data-al>Pse BOMED</span></p>
       <h2 class="sec-title">
-        <span data-mk>Разликата во <span>секој детал</span></span>
-        <span data-en>The difference in <span>every detail</span></span>
-        <span data-al>Ndryshimi në <span>çdo detaj</span></span>
+        <span data-mk>Зошто <span>BOMED</span></span>
+        <span data-en>Why <span>BOMED</span></span>
+        <span data-al>Pse <span>BOMED</span></span>
       </h2>
       <div class="divider-gold"></div>
+      <p class="sec-sub">
+        <span data-mk>Производи изработени со внимание и грижа.</span>
+        <span data-en>Products made with attention and care.</span>
+        <span data-al>Produkte të krijuara me kujdes dhe përkushtim.</span>
+      </p>
     </div>
     <div class="diff-grid">
       <div class="diff-item fade-up">
@@ -913,7 +756,7 @@
       <div class="diff-item fade-up">
         <div class="diff-icon-wrap">🏔️</div>
         <div class="diff-title"><span data-mk>Македонски планини</span><span data-en>Macedonian Highlands</span><span data-al>Malet Maqedonase</span></div>
-        <p class="diff-desc"><span data-mk>Нашите кошници се на над 1000 метри, далеку од загадување — во недопрената македонска природа.</span><span data-en>Our hives sit above 1000m elevation, far from any pollution — in pristine Macedonian nature.</span><span data-al>Kosherët tona janë mbi 1000m lartësi, larg çdo ndotjeje — në natyrën e paprekur maqedonase.</span></p>
+        <p class="diff-desc"><span data-mk>Нашите кошници се далеку од загадување — во недопрената македонска природа.</span><span data-en>Our hives sit above 1000m elevation, far from any pollution — in pristine Macedonian nature.</span><span data-al>Kosherët tona janë mbi 1000m lartësi, larg çdo ndotjeje — në natyrën e paprekur maqedonase.</span></p>
       </div>
       <div class="diff-item fade-up">
         <div class="diff-icon-wrap">🔬</div>
@@ -939,33 +782,37 @@
       <div class="about-text-col fade-right">
         <p class="about-tag"><span data-mk>За нас</span><span data-en>About Us</span><span data-al>Rreth Nesh</span></p>
         <h2 class="about-title">
-          <span data-mk>Повеќе од <span>дваесет и пет</span> години во служба на природата</span>
-          <span data-en>More than <span>twenty-five years</span> in service of nature</span>
-          <span data-al>Më shumë se <span>njëzet e pesë vjet</span> në shërbim të natyrës</span>
+          <span data-mk>Повеќе од <span>57</span> години во служба на природата</span>
+          <span data-en>More than <span>57</span> years in service of nature</span>
+          <span data-al>Më shumë se <span>57</span> vjet në shërbim të natyrës</span>
         </h2>
         <div class="divider-honey" style="margin:16px 0 24px;"></div>
         <div class="about-text">
           <p>
-            <span data-mk>BOMED е семеен бренд роден од страст кон пчелите и длабока почит кон природата. Нашата приказна почнува во срцето на македонските планини, каде генерации пчелари ги чувале тајните на чистиот мед.</span>
-            <span data-en>BOMED is a family brand born from a passion for bees and deep respect for nature. Our story begins in the heart of the Macedonian mountains, where generations of beekeepers have guarded the secrets of pure honey.</span>
-            <span data-al>BOMED është një markë familjare e lindur nga pasioni për bletët dhe respekti i thellë ndaj natyrës. Historia jonë fillon në zemrën e maleve maqedonase, ku gjenerata bletarësh kanë ruajtur sekretet e mjaltit të pastër.</span>
+            <span data-mk>BOMED е семеен бренд роден од страста кон пчелите и длабоката почит кон природата.</span>
+            <span data-en>BOMED is a family brand born from a passion for bees and a deep respect for nature.</span>
+            <span data-al>BOMED është një markë familjare e lindur nga pasioni për bletët dhe respekti i thellë ndaj natyrës.</span>
           </p>
           <p>
-            <span data-mk>Со <strong>над 25 години искуство</strong>, нашите производи се создадени без компромис — само природни состојки, собрани во вистинскиот момент, со цел да ги зачуваат сите лековити вредности.</span>
-            <span data-en>With <strong>over 25 years of experience</strong>, our products are crafted without compromise — only natural ingredients, harvested at the right moment, preserving every healing property.</span>
-            <span data-al>Me <strong>mbi 25 vjet përvojë</strong>, produktet tona krijohen pa kompromis — vetëm përbërës natyralë, të mbledhur në momentin e duhur, duke ruajtur çdo veti shëruese.</span>
+            <span data-mk>Почетоците се во подножјето на Шар Планина каде генерации пчелари ги откриваат тајните на производството на пчелните производи и нивната употреба за природна поддршка на здравјето на луѓето.</span>
+            <span data-en>Our beginnings are at the foot of Šar Mountain, where generations of beekeepers have discovered the secrets of producing bee products and using them for the natural support of people's health.</span>
+            <span data-al>Fillimet tona janë në këmbët e Malit Sharr, ku gjenerata bletarësh kanë zbuluar sekretet e prodhimit të produkteve të bletëve dhe përdorimin e tyre për mbështetje natyrore të shëndetit të njerëzve.</span>
+          </p>
+          <p>
+            <span data-mk>Со <strong>над 57 години искуство</strong>, следење на најсовремена литература, посета на симпозиуми, предавања и различни манифестации од областа на пчеларството, нашите производи се создадени без компромис — само природни состојки, собрани во вистинскиот момент со цел да ги зачуваат сите лековити вредности.</span>
+            <span data-en>With <strong>over 57 years of experience</strong>, keeping up with the latest literature, attending symposiums, lectures and various events in the field of beekeeping, our products are crafted without compromise — only natural ingredients, harvested at the right moment to preserve every healing property.</span>
+            <span data-al>Me <strong>mbi 57 vjet përvojë</strong>, duke ndjekur literaturën më bashkëkohore, duke marrë pjesë në simpoziume, ligjërata dhe evenimente të ndryshme nga fusha e bletarisë, produktet tona krijohen pa kompromis — vetëm përbërës natyralë, të mbledhur në momentin e duhur për të ruajtur çdo veti shëruese.</span>
           </p>
           <p>
             <span data-mk>Верувааме дека природата нуди одговор на многу прашања. Нашата мисија е да ве поврземе со тие одговори — чисто, искрено и природно.</span>
             <span data-en>We believe nature holds the answer to many questions. Our mission is to connect you with those answers — purely, honestly, and naturally.</span>
             <span data-al>Besojmë se natyra mban përgjigjen për shumë pyetje. Misioni ynë është t'ju lidhim me ato përgjigje — pastër, sinqerisht dhe natyrshëm.</span>
           </p>
-        </div>
-        <div class="about-badges">
-          <div class="badge"><span class="checkmark">✓</span><span data-mk>Без конзерванси</span><span data-en>Preservative-free</span><span data-al>Pa konservantë</span></div>
-          <div class="badge"><span class="checkmark">✓</span><span data-mk>Сертифицирано природно</span><span data-en>Certified natural</span><span data-al>I çertifikuar natyror</span></div>
-          <div class="badge"><span class="checkmark">✓</span><span data-mk>Семеена традиција</span><span data-en>Family tradition</span><span data-al>Traditë familjare</span></div>
-          <div class="badge"><span class="checkmark">✓</span><span data-mk>Македонски планини</span><span data-en>Macedonian mountains</span><span data-al>Malet maqedonase</span></div>
+          <p>
+            <span data-mk>Ви благодариме што избирате домашно. Со секоја тегла БОМЕД ја поддржувате љубовта кон пчелите, природата и семејното производство.</span>
+            <span data-en>Thank you for choosing homemade. With every jar of BOMED, you support the love of bees, nature, and family production.</span>
+            <span data-al>Ju falënderojmë që zgjidhni prodhimin shtëpiak. Me çdo kavanoz BOMED, ju mbështesni dashurinë për bletët, natyrën dhe prodhimin familjar.</span>
+          </p>
         </div>
       </div>
     </div>
@@ -1001,9 +848,9 @@
         <div class="journey-info">
           <div class="journey-event">Tetovo Honey Awards</div>
           <p class="journey-detail">
-            <span data-mk>Бојан &amp; Ратко Исовски ја освоија Златната награда за повеќецветен мед — прво големо признание кое ги постави темелите на BOMED.</span>
-            <span data-en>Bojan &amp; Ratko Isoski won the Gold Award for multifloral honey — the first major recognition that laid the foundations of BOMED.</span>
-            <span data-al>Bojan &amp; Ratko Isoski fituan Çmimin Ari për mjaltë shumëluletor — njohja e parë e madhe që vendosi themelet e BOMED.</span>
+            <span data-mk>Бојан &amp; Ратко со освоени златни медаљи за два типа цветен мед - дел од многуте признанија за квалитет на нашите производи.</span>
+            <span data-en>Bojan &amp; Ratko with gold medals won for two types of flower honey — part of the many recognitions for the quality of our products.</span>
+            <span data-al>Bojan &amp; Ratko me medalje ari të fituara për dy lloje mjaltë lulesh — pjesë e shumë njohjeve për cilësinë e produkteve tona.</span>
           </p>
         </div>
       </div>
@@ -1031,15 +878,15 @@
           <img src="saemmm.jpg" alt="BeeFest 2025 Belgrade" class="journey-photo" />
           <div class="journey-overlay">
             <div class="journey-year">2025</div>
-            <div class="journey-award">🐝 <span data-mk>Меѓународна изложба</span><span data-en>International Exhibition</span><span data-al>Ekspozitë Ndërkombëtare</span></div>
+            <div class="journey-award">🐝 <span data-mk>Меѓународен фестивал на пчелата</span><span data-en>International Bee Festival</span><span data-al>Festivali Ndërkombëtar i Bletës</span></div>
           </div>
         </div>
         <div class="journey-info">
           <div class="journey-event">BeeFest 2025 — <span data-mk>Белград</span><span data-en>Belgrade</span><span data-al>Beograd</span></div>
           <p class="journey-detail">
-            <span data-mk>BOMED меѓу елитата на пчеларите на Балканот — меѓународна изложба во Хјат Риџенси, Белград.</span>
-            <span data-en>BOMED among the beekeeping elite of the Balkans — international exhibition at the Hyatt Regency, Belgrade.</span>
-            <span data-al>BOMED ndër elitën e bletarëve të Ballkanit — ekspozitë ndërkombëtare në Hyatt Regency, Beograd.</span>
+            <span data-mk>BOMED меѓу елитата на пчеларите од Балканот на предавања од врвни предавачи од Европа и Америка во Хјат Риџенси, Белград.</span>
+            <span data-en>BOMED among the beekeeping elite of the Balkans, at lectures by top speakers from Europe and America at the Hyatt Regency, Belgrade.</span>
+            <span data-al>BOMED ndër elitën e bletarëve të Ballkanit, në ligjërata nga ligjërues të shquar nga Evropa dhe Amerika në Hyatt Regency, Beograd.</span>
           </p>
         </div>
       </div>
@@ -1055,9 +902,9 @@
         <div class="journey-info">
           <div class="journey-event"><span data-mk>Ратко Исовски — Белград</span><span data-en>Ratko Isoski — Belgrade</span><span data-al>Ratko Isoski — Beograd</span></div>
           <p class="journey-detail">
-            <span data-mk>Ратко Исовски на меѓународниот BeeFest во Белград — претставувајќи ги вредностите на македонското пчеларство.</span>
-            <span data-en>Ratko Isoski at the international BeeFest in Belgrade — representing the values of Macedonian beekeeping.</span>
-            <span data-al>Ratko Isoski në BeeFest ndërkombëtar në Beograd — duke përfaqësuar vlerat e bletarisë maqedonase.</span>
+            <span data-mk>Ратко Исовски на меѓународниот BeeFest во Белград — Единствен учесник од Македонија.</span>
+            <span data-en>Ratko Isoski at the international BeeFest in Belgrade — the only participant from Macedonia.</span>
+            <span data-al>Ratko Isoski në BeeFest ndërkombëtar në Beograd — pjesëmarrësi i vetëm nga Maqedonia.</span>
           </p>
         </div>
       </div>
@@ -1085,7 +932,7 @@
     <div class="team-grid">
 
       <div class="team-card fade-up">
-        <img src="ratko.jpg" alt="Ratko Isovski" class="team-photo" onerror="this.style.background='linear-gradient(135deg,#A07830,#D4A843)';this.src='';" />
+        <img src="ratko2.jpg" alt="Ratko Isovski" class="team-photo" onerror="this.style.background='linear-gradient(135deg,#A07830,#D4A843)';this.src='';" />
         <div class="team-name">Ратко Исовски<br /><span style="font-size:0.75em;font-style:italic;font-family:Montserrat,sans-serif;">Ratko Isovski</span></div>
         <div class="team-role"><span data-mk>Основач &amp; Пчелар</span><span data-en>Founder &amp; Beekeeper</span><span data-al>Themelues &amp; Bletari</span></div>
         <div class="team-divider"></div>
@@ -1119,7 +966,7 @@
       </div>
 
       <div class="team-card fade-up">
-        <img src="boki.jpg" alt="Bojan Isovski" class="team-photo" onerror="this.style.background='linear-gradient(135deg,#A07830,#D4A843)';this.src='';" />
+        <img src="boki2.jpg" alt="Bojan Isovski" class="team-photo" onerror="this.style.background='linear-gradient(135deg,#A07830,#D4A843)';this.src='';" />
         <div class="team-name">Бојан Исовски<br /><span style="font-size:0.75em;font-style:italic;font-family:Montserrat,sans-serif;">Bojan Isovski</span></div>
         <div class="team-role"><span data-mk>Продажба &amp; Контакт</span><span data-en>Sales &amp; Contact</span><span data-al>Shitje &amp; Kontakt</span></div>
         <div class="team-divider"></div>
@@ -1475,8 +1322,8 @@
           <li><a href="#products"><span data-mk>Природни Производи</span><span data-en>Natural Products</span><span data-al>Produkte Natyrale</span></a></li>
           <li><a href="#products"><span data-mk>Шарен Мед</span><span data-en>Colourful Honey</span><span data-al>Mjaltë me Ngjyra</span></a></li>
           <li><a href="#products"><span data-mk>Лековита Крема</span><span data-en>Healing Lotion</span><span data-al>Krem Shërues</span></a></li>
-          <li><a href="#products"><span data-mk>Прополис Спреј</span><span data-en>Propolis Spray</span><span data-al>Sprej Propolisi</span></a></li>
-          <li><a href="#products"><span data-mk>Крема за Лице</span><span data-en>Face Cream</span><span data-al>Krem për Fytyrë</span></a></li>
+          <li><a href="#products"><span data-mk>Прополис Тинктура</span><span data-en>Propolis Tincture</span><span data-al>Tinkturë Propolisi</span></a></li>
+          <li><a href="#products"><span data-mk>Медена Крема за Лице</span><span data-en>Honey Face Cream</span><span data-al>Krem me Mjaltë për Fytyrë</span></a></li>
         </ul>
       </div>
     </div>
@@ -1485,6 +1332,377 @@
       <span><span data-mk>Природата во секоја капка</span><span data-en>Nature in every drop</span><span data-al>Natyra në çdo pikë</span></span>
     </div>
   </footer>
+
+  <!-- ═══ PRODUCTS OVERLAY ═══ -->
+  <div id="products-overlay" class="products-overlay" aria-hidden="true">
+    <button class="products-close" onclick="closeProducts()" aria-label="Затвори">✕</button>
+    <div class="products-overlay-inner">
+      <h2 class="products-overlay-title">
+        <span data-mk>Нашите Производи</span>
+        <span data-en>Our Products</span>
+        <span data-al>Produktet Tona</span>
+      </h2>
+
+      <div class="products-grid">
+
+        <!-- Best Seller -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="queen.jpg" alt="BOMED Bestseller Collection" class="product-photo" />
+            <span class="product-badge"><span data-mk>Бестселер</span><span data-en>Best Seller</span><span data-al>Bestseller</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Бестселер Колекција</span><span data-en>Bestseller Collection</span><span data-al>Koleksioni Bestseller</span></div>
+            <p class="product-desc">
+              <span data-mk>Мајсторска мешавина од чист мед, лимон, цимет и ѓумбир — најмоќните состојки на природата, обединети во еден тегла.</span>
+              <span data-en>A masterful blend of pure honey, lemon, cinnamon and ginger — nature's most potent ingredients, unified in a single jar.</span>
+              <span data-al>Një përzierje e shkëlqyer e mjaltit të pastër, limonit, kanellës dhe xhenxhefilit — përbërësit më të fuqishëm të natyrës, të unifikuar në një kavanoz.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Највеќе нарачувани</span><span data-en>→ Most Ordered</span><span data-al>→ Më Të Porositura</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Immunity -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="immm.jpg" alt="BOMED Immunity — Мед и Млеч" class="product-photo" style="object-position: center 70%;" />
+            <span class="product-badge"><span data-mk>Имунитет</span><span data-en>Immunity</span><span data-al>Imunitet</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Мед и Матичен Млеч</span><span data-en>Honey &amp; Royal Jelly</span><span data-al>Mjaltë &amp; Geleja Mbretërore</span></div>
+            <p class="product-desc">
+              <span data-mk>Формулиран за одржување на вашата енергија во текот на целиот ден, додека моќно го зајакнува имунолошкиот систем со најфин матичен млеч.</span>
+              <span data-en>Formulated to sustain your energy throughout the entire day while powerfully reinforcing your immune system with the finest royal jelly.</span>
+              <span data-al>Formuluar për të mbajtur energjinë tuaj gjatë gjithë ditës, ndërsa forcon fuqishëm sistemin tuaj imunitar me gjelenë mbretërore më të mirë.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Природна заштита</span><span data-en>→ Natural Protection</span><span data-al>→ Mbrojtje Natyrale</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Honey, Pollen & Royal Jelly -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="go.jpg" alt="BOMED Мед, полен и млеч" class="product-photo" />
+            <span class="product-badge"><span data-mk>Полен и Млеч</span><span data-en>Pollen &amp; Jelly</span><span data-al>Polen &amp; Gjelenë</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Мед, полен и млеч</span><span data-en>Honey, Pollen &amp; Royal Jelly</span><span data-al>Mjaltë, Polen dhe Gjelenë Mbretërore</span></div>
+            <p class="product-desc">
+              <span data-mk>Многу хранлив концентрат кој ги содржи сите материи неопходни за раст, развој и одржување на биолошката рамнотежа на организмот. Се препорачува како природна поддршка особено на лица кои се изложени на физички или умствени напори, на спортисти, на лица кои се опоравуваат по прележана болест (реконвалесценти), затоа што содржи големи количини на белковини, масла, минерални материи, аминокиселини, витамини и ензими. Секако се препорачува и на здрави луѓе за природна поддршка на имунитетот и воопшто на здравјето.</span>
+              <span data-en>A highly nutritious concentrate containing all the substances necessary for growth, development and maintaining the body's biological balance. It is recommended as natural support especially for people exposed to physical or mental strain, athletes, and those recovering from illness (convalescents), as it contains large amounts of proteins, oils, minerals, amino acids, vitamins and enzymes. It is of course also recommended for healthy people as natural support for immunity and overall health.</span>
+              <span data-al>Një koncentrat shumë ushqyes që përmban të gjitha substancat e nevojshme për rritjen, zhvillimin dhe ruajtjen e ekuilibrit biologjik të organizmit. Rekomandohet si mbështetje natyrale veçanërisht për personat e ekspozuar ndaj përpjekjeve fizike apo mendore, sportistët, si dhe personat që janë duke u rikuperuar pas një sëmundjeje (rekonvalesentë), pasi përmban sasi të mëdha proteinash, vajrash, mineralesh, aminoacidesh, vitaminash dhe enzimash. Sigurisht rekomandohet edhe për njerëzit e shëndetshëm si mbështetje natyrale për imunitetin dhe shëndetin në përgjithësi.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Природен концентрат</span><span data-en>→ Natural Concentrate</span><span data-al>→ Koncentrat Natyror</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="immunity.jpg" alt="BOMED Premium — Мед со Чуваркука" class="product-photo" />
+            <span class="product-badge"><span data-mk>Премиум</span><span data-en>Premium</span><span data-al>Premium</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Мед со Чуваркука</span><span data-en>Honey with Houseleek</span><span data-al>Mjaltë Premium</span></div>
+            <p class="product-desc">
+              <span data-mk>Традиционален природен лек кој го поддржува уринарниот систем и промовира здраво варење преку чистата синергија на чуваркуката и медот.</span>
+              <span data-en>A time-honoured natural remedy that supports urinary tract health and promotes healthy digestion through the pure synergy of houseleek and honey.</span>
+              <span data-al>Një ilaç natyror i sprovuar që mbështet shëndetin e traktit urinar dhe promovon tretje të shëndetshme nëpërmjet sinergisë së pastër të bimës dhe mjaltit.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Ексклузивно</span><span data-en>→ Exclusive</span><span data-al>→ Ekskluzive</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regular / Full Range -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="nattttu.jpg" alt="BOMED Full Product Range" class="product-photo" />
+            <span class="product-badge"><span data-mk>Природно</span><span data-en>Natural</span><span data-al>Natyral</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Природни Производи</span><span data-en>Natural Products</span><span data-al>Produkte Natyrale</span></div>
+            <p class="product-desc">
+              <span data-mk>Внимателно селектиран избор на нашите најфини природни производи — чисти, непреработени и директно од нетакнатите македонски планини.</span>
+              <span data-en>A carefully curated selection of our finest natural offerings — pure, unprocessed and sourced directly from the pristine Macedonian highlands.</span>
+              <span data-al>Një përzgjedhje e kujdesshme e ofertave tona natyrore më të mira — të pastra, të papërpunuara dhe të siguruara drejtpërdrejt nga malet e paprekura maqedonase.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Широк избор</span><span data-en>→ Wide Selection</span><span data-al>→ Zgjedhje e Gjerë</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colourful Honey -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="colorful.jpg" alt="BOMED Colourful Honey" class="product-photo" />
+            <span class="product-badge"><span data-mk>Шарен мед</span><span data-en>Colourful Honey</span><span data-al>Mjaltë me Ngjyra</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Шарен Мед</span><span data-en>Colourful Honey</span><span data-al>Mjaltë me Ngjyra</span></div>
+            <p class="product-desc">
+              <span data-mk>Живописен асортиман на ароматични сорти мед, секоја со свој уникатен карактер — позната по природното олеснување при мигренозни напади.</span>
+              <span data-en>A vibrant assortment of flavourful honey varieties, each with its own unique character — and known for providing natural relief from migraine attacks.</span>
+              <span data-al>Një asortiment i gjallë i varieteteve të mjaltit aromatik, secila me karakterin e saj unik — e njohur për lehtësimin natyror nga sulmet migrenoze.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Разновидни сорти</span><span data-en>→ Variety of Sorts</span><span data-al>→ Varietete të Ndryshme</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Healing Lotion -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="healinglotion.jpg" alt="BOMED Healing Lotion" class="product-photo" />
+            <span class="product-badge"><span data-mk>Лековита крема</span><span data-en>Healing Lotion</span><span data-al>Krem Shërues</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Лековита Крема</span><span data-en>Healing Lotion</span><span data-al>Krem Shërues</span></div>
+            <p class="product-desc">
+              <span data-mk>Хранлива природна крема создадена да ја ревитализира и омекне кожата, додека нуди смирувачко олеснување при болки во зглобовите и грбот.</span>
+              <span data-en>A nourishing natural lotion crafted to revitalise and soften the skin while delivering soothing relief for joint discomfort and back pain.</span>
+              <span data-al>Një locion natyror ushqyes i krijuar për të ringjallur dhe zbutur lëkurën, ndërsa ofron lehtësim qetësues për shqetësimet e kyçeve dhe dhimbjet e shpinës.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Природна нега</span><span data-en>→ Natural Care</span><span data-al>→ Kujdes Natyror</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Propolis Spray -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="spray.jpg" alt="BOMED Propolis Tincture" class="product-photo" />
+            <span class="product-badge"><span data-mk>Прополис тинктура</span><span data-en>Propolis Tincture</span><span data-al>Tinkturë Propolisi</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Прополис Тинктура</span><span data-en>Propolis Tincture</span><span data-al>Tinkturë Propolisi</span></div>
+            <p class="product-desc">
+              <span data-mk>Природна поддршка со докажани својства:<br />– антимикробно дејство<br />– поддршка на имунолошкиот систем<br />– смирување на воспаленија во усна шуплина и грло<br />– помага против хеликобактер пилори.</span>
+              <span data-en>Natural support with proven properties:<br />– antimicrobial action<br />– supports the immune system<br />– soothes inflammation in the mouth and throat<br />– helps against Helicobacter pylori.</span>
+              <span data-al>Mbështetje natyrale me veti të dëshmuara:<br />– veprim antimikrobik<br />– mbështetje e sistemit imunitar<br />– qetësim i inflamacioneve në gojë dhe fyt<br />– ndihmon kundër Helicobacter pylori.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Нос и грло</span><span data-en>→ Nose &amp; Throat</span><span data-al>→ Hundë &amp; Fyt</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Propomed -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="pro.jpg" alt="BOMED Пропомед" class="product-photo" />
+            <span class="product-badge"><span data-mk>Пропомед</span><span data-en>Propomed</span><span data-al>Propomed</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Пропомед</span><span data-en>Propomed</span><span data-al>Propomed</span></div>
+            <p class="product-desc">
+              <span data-mk>Со миксот од мед и прополис — пропомед — ќе го заштитите грлото од инфекции, смирува болки во грлото и сува кашлица, го олеснува исфрлањето на шлајм, благотворно делува на органите за варење.</span>
+              <span data-en>With this blend of honey and propolis — Propomed — you protect your throat from infections; it soothes sore throats and dry coughs, eases the clearing of phlegm, and benefits the digestive organs.</span>
+              <span data-al>Me përzierjen e mjaltit dhe propolisit — Propomed — do ta mbroni fytin nga infeksionet; qetëson dhimbjet e fytit dhe kollën e thatë, lehtëson nxjerrjen e flegmës dhe ka efekt të dobishëm në organet e tretjes.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Грло и имунитет</span><span data-en>→ Throat &amp; Immunity</span><span data-al>→ Fyti &amp; Imuniteti</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perga -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="prpr.jpg" alt="BOMED Перга" class="product-photo" />
+            <span class="product-badge"><span data-mk>Перга</span><span data-en>Bee Pollen Bread</span><span data-al>Bukë Bletësh</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Перга</span><span data-en>Perga</span><span data-al>Perga</span></div>
+            <p class="product-desc">
+              <span data-mk>Се користи за балансирање на исхраната кога недостасуваат белковини, минерали и витамини. Ја зголемува отпорноста на инфекции, ја обновува цревната флора. Природна поддршка за одржување и подобрување на потенцијата и функцијата на простатата.</span>
+              <span data-en>Used to balance the diet when proteins, minerals and vitamins are lacking. It increases resistance to infections and restores the intestinal flora. Natural support for maintaining and improving potency and prostate function.</span>
+              <span data-al>Përdoret për të balancuar dietën kur mungojnë proteinat, mineralet dhe vitaminat. Rrit rezistencën ndaj infeksioneve dhe rikthen florën e zorrëve. Mbështetje natyrale për ruajtjen dhe përmirësimin e potencës dhe funksionit të prostatës.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Природна рамнотежа</span><span data-en>→ Natural Balance</span><span data-al>→ Balancë Natyrale</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elder Ointment -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="bbbbbbbb.jpg" alt="BOMED Маст со бозел" class="product-photo" />
+            <span class="product-badge"><span data-mk>Маст со бозел</span><span data-en>Elder Ointment</span><span data-al>Krem me Shtog</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Маст со Бозел</span><span data-en>Elder Ointment</span><span data-al>Krem me Shtog</span></div>
+            <p class="product-desc">
+              <span data-mk>Нежна природна нега за кожата – корисна при полесни изгореници, убоди од инсекти, иритации, гребнатинки и сува, испукана кожа. Практична за секој дом и секогаш добро е да ја имате при рака.</span>
+              <span data-en>Gentle natural skin care — useful for minor burns, insect bites, irritations, scratches and dry, cracked skin. Practical for every home, and always good to have on hand.</span>
+              <span data-al>Kujdes natyral i butë për lëkurën — i dobishëm për djegie të lehta, kafshime insektesh, irritime, gërvishtje dhe lëkurë të thatë, të çarë. Praktik për çdo shtëpi dhe gjithmonë mirë ta kesh pranë.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Нега за кожа</span><span data-en>→ Skin Care</span><span data-al>→ Kujdes për Lëkurën</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Face Cream -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="face.jpg" alt="BOMED Face Cream" class="product-photo" />
+            <span class="product-badge"><span data-mk>Медена крема за лице</span><span data-en>Honey Face Cream</span><span data-al>Krem me Mjaltë për Fytyrë</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Медена Крема за Лице</span><span data-en>Honey Face Cream</span><span data-al>Krem me Mjaltë për Fytyrë</span></div>
+            <p class="product-desc">
+              <span data-mk>Луксузна крема за лице збогатена со мед која длабоко хидрира, активно спречува акни и остава тенот видливо помазен и посјаен.</span>
+              <span data-en>A luxurious honey-infused face cream that deeply hydrates the skin, actively prevents breakouts and leaves your complexion visibly smoother and more radiant.</span>
+              <span data-al>Një krem luksoz për fytyrë i pasuruar me mjaltë që hidraton thellë lëkurën, parandalon aktivisht puçrrat dhe lë tiparet tuaja dukshëm më të lëmuara dhe të ndritshme.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Природна козметика</span><span data-en>→ Natural Cosmetics</span><span data-al>→ Kozmetikë Natyrale</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Handmade Soaps -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="sapun.jpg" alt="BOMED Природни рачно изработени сапуни" class="product-photo" />
+            <span class="product-badge"><span data-mk>Природни сапуни</span><span data-en>Natural Soaps</span><span data-al>Sapunë Natyralë</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Природни, Рачно Изработени Сапуни</span><span data-en>Natural, Handmade Soaps</span><span data-al>Sapunë Natyralë të Bërë me Dorë</span></div>
+            <p class="product-desc">
+              <span data-mk>Комбинации од квалитетни масла, облагородени со мед, восок, спирулина, цимет, какао, авокадо.</span>
+              <span data-en>Combinations of quality oils, enriched with honey, beeswax, spirulina, cinnamon, cacao and avocado.</span>
+              <span data-al>Kombinime vajrash cilësorë, të pasuruar me mjaltë, dyllë blete, spirulinë, kanellë, kakao dhe avokado.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ Целосно природно</span><span data-en>→ Fully Natural</span><span data-al>→ Plotësisht Natyral</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beeswax Candles -->
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-image-bg"></div>
+            <img src="sveka.jpg" alt="BOMED Рачно изработени свеќи од чист пчелин восок" class="product-photo" />
+            <span class="product-badge"><span data-mk>Свеќи од восок</span><span data-en>Beeswax Candles</span><span data-al>Qirinj Dylli</span></span>
+          </div>
+          <div class="product-body">
+            <div class="product-name"><span data-mk>Рачно Изработени Свеќи од Пчелин Восок</span><span data-en>Handmade Pure Beeswax Candles</span><span data-al>Qirinj të Bërë me Dorë nga Dyllë i Pastër Blete</span></div>
+            <p class="product-desc">
+              <span data-mk>Рачно изработени свеќи од 100% чист пчелин восок. Природна светлина со мирис на мед.</span>
+              <span data-en>Handmade candles made of 100% pure beeswax. Natural light with the scent of honey.</span>
+              <span data-al>Qirinj të bërë me dorë nga 100% dyllë i pastër blete. Dritë natyrale me aromë mjalti.</span>
+            </p>
+            <div class="product-footer" style="padding-top:0;border-top:none;">
+              <span class="product-tag"><span data-mk>→ 100% чист восок</span><span data-en>→ 100% Pure Beeswax</span><span data-al>→ 100% Dyllë i Pastër</span></span>
+              <button class="btn-shop" onclick="closeProducts();document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span data-mk>Нарачај</span><span data-en>Order</span><span data-al>Porosit</span></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Our Range -->
+      <div class="range-block">
+        <p class="sec-tag"><span data-mk>Нашата понуда</span><span data-en>Our Range</span><span data-al>Gama Jonë</span></p>
+        <h3 class="range-title">
+          <span data-mk>Сè што <span>нудиме</span></span>
+          <span data-en>Everything we <span>offer</span></span>
+          <span data-al>Gjithçka që <span>ofrojmë</span></span>
+        </h3>
+        <div class="divider-gold"></div>
+        <div class="range-list">
+          <span class="range-pill"><span data-mk>Различни видови мед</span><span data-en>Various Types of Honey</span><span data-al>Lloje të Ndryshme Mjalti</span></span>
+          <span class="range-pill"><span data-mk>Матичен млеч</span><span data-en>Royal Jelly</span><span data-al>Qumësht Nëne</span></span>
+          <span class="range-pill"><span data-mk>Полен</span><span data-en>Bee Pollen</span><span data-al>Polen Blete</span></span>
+          <span class="range-pill"><span data-mk>Прополис</span><span data-en>Propolis</span><span data-al>Propolis</span></span>
+          <span class="range-pill"><span data-mk>Перга</span><span data-en>Bee Bread (Perga)</span><span data-al>Perga (Bukë Blete)</span></span>
+          <span class="range-pill"><span data-mk>Медни мешавини</span><span data-en>Honey Blends</span><span data-al>Përzierje Mjalti</span></span>
+          <span class="range-pill"><span data-mk>Природна козметика</span><span data-en>Natural Cosmetics</span><span data-al>Kozmetikë Natyrale</span></span>
+          <span class="range-pill"><span data-mk>Рачно изработени сапуни</span><span data-en>Handmade Soaps</span><span data-al>Sapunë të Bërë me Dorë</span></span>
+          <span class="range-pill"><span data-mk>Рачно изработени свеќи од чист восок</span><span data-en>Handmade Candles Made of Pure Beeswax</span><span data-al>Qirinj të Bërë me Dorë nga Dyllë i Pastër Blete</span></span>
+          <span class="range-pill"><span data-mk>Домашни производи</span><span data-en>Homemade Products</span><span data-al>Produkte Shtëpiake</span></span>
+        </div>
+      </div>
+
+      <!-- More Products Notice -->
+      <div class="products-notice">
+        <div class="products-notice-inner">
+          <div class="notice-divider"></div>
+          <h3 class="notice-title">
+            <span data-mk>Имаме многу повеќе производи</span>
+            <span data-en>We Have Many More Products</span>
+            <span data-al>Kemi Shumë Më Tepër Produkte</span>
+          </h3>
+          <p class="notice-desc">
+            <span data-mk>На оваа страница прикажуваме само дел од нашиот богат асортиман. Имаме многу повеќе производи кои не се прикажани овде — различни видови мед, специјални мешавини, сезонски производи и уште многу повеќе. Доколку сакате да дознаете повеќе или да направите нарачка, слободно контактирајте не.</span>
+            <span data-en>On this page we showcase only a selection of our rich product range. We have many more products not listed here — different honey varieties, special blends, seasonal offerings and much more. If you would like to find out more or place an order, please do not hesitate to contact us.</span>
+            <span data-al>Në këtë faqe shfaqim vetëm një pjesë të gamës sonë të pasur të produkteve. Kemi shumë produkte të tjera që nuk tregohen këtu — lloje të ndryshme mjalti, përzierje speciale, oferta sezonale dhe shumë më tepër. Nëse dëshironi të mësoni më shumë ose të bëni një porosi, mos ngurroni të na kontaktoni.</span>
+          </p>
+          <p class="notice-price">
+            <span data-mk>Цените ги договараме директно — контактирајте не и ќе ви помогнеме да изберете најдобро за вас.</span>
+            <span data-en>Pricing is discussed directly — reach out and we will help you find the best option for your needs.</span>
+            <span data-al>Çmimet i diskutojmë drejtpërdrejt — na kontaktoni dhe do t'ju ndihmojmë të zgjidhni më të mirën për ju.</span>
+          </p>
+          <div style="margin-bottom:28px;padding:18px 24px;background:rgba(212,168,67,0.06);border:1px solid rgba(212,168,67,0.25);border-radius:3px;position:relative;z-index:1;">
+            <p style="font-size:0.85rem;line-height:1.85;color:var(--text-dim);margin:0;">
+              <strong style="color:var(--gold);display:block;margin-bottom:6px;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;">
+                <span data-mk>💬 Како да нарачате</span><span data-en>💬 How to Order</span><span data-al>💬 Si të Porosisni</span>
+              </strong>
+              <span data-mk>Спремни сте да нарачате или сакате да дознаете повеќе? Контактирајте не — одговараме брзо. Најдете не на <strong style="color:var(--gold);">Facebook</strong>, <strong style="color:var(--gold);">Instagram</strong>, по <strong style="color:var(--gold);">е-пошта</strong> или на <strong style="color:var(--gold);">телефон</strong>.</span>
+              <span data-en>Ready to order or want to know more? Just reach out — we reply fast. Find us on <strong style="color:var(--gold);">Facebook</strong>, <strong style="color:var(--gold);">Instagram</strong>, by <strong style="color:var(--gold);">email</strong> or <strong style="color:var(--gold);">phone</strong>.</span>
+              <span data-al>Gati për të porositur ose dëshironi të dini më shumë? Na kontaktoni — përgjigjemi shpejt. Na gjeni në <strong style="color:var(--gold);">Facebook</strong>, <strong style="color:var(--gold);">Instagram</strong>, me <strong style="color:var(--gold);">email</strong> ose <strong style="color:var(--gold);">telefon</strong>.</span>
+            </p>
+          </div>
+          <a href="#contact" class="btn-primary" style="display:inline-block;" onclick="closeProducts()">
+            <span data-mk>Контактирајте не</span>
+            <span data-en>Contact Us</span>
+            <span data-al>Na Kontaktoni</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <div id="copy-toast">Copied!</div>
 
@@ -1553,6 +1771,24 @@
 
     function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); }
     function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); }
+
+    function openProducts() {
+      const overlay = document.getElementById('products-overlay');
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProducts() {
+      const overlay = document.getElementById('products-overlay');
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeProducts();
+    });
 
     window.addEventListener('scroll', () => {
       document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
